@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createApp } from '../src/app.js';
 
-describe('indicators + compare API routes (scaffold)', () => {
+describe('indicators + compare API routes', () => {
   it('handles /api/v1/indicators readiness', async () => {
     const app = createApp();
 
@@ -10,15 +10,12 @@ describe('indicators + compare API routes (scaffold)', () => {
       url: '/api/v1/indicators?search=gdp'
     });
 
-    // TODO(indicators): once implemented, require strict 200 and exact schema.
-    expect([404, 200]).toContain(response.statusCode);
-
-    if (response.statusCode === 404) {
-      expect(response.json().message).toContain('not found');
-    } else {
-      const body = response.json();
-      expect(Array.isArray(body.items ?? body.indicators ?? [])).toBe(true);
-    }
+    expect(response.statusCode).toBe(200);
+    const body = response.json();
+    expect(body.totalCountries).toBeGreaterThan(0);
+    expect(Array.isArray(body.items)).toBe(true);
+    expect(body.items[0]).toHaveProperty('countryCode');
+    expect(body.items[0]).toHaveProperty('indicators');
 
     await app.close();
   });
@@ -31,20 +28,29 @@ describe('indicators + compare API routes (scaffold)', () => {
       url: '/api/v1/compare?indicator=NY.GDP.MKTP.CD&countries=USA,CHN,JPN'
     });
 
-    // TODO(compare): once implemented, require strict 200 and exact schema.
-    expect([404, 200]).toContain(response.statusCode);
-
-    if (response.statusCode === 404) {
-      expect(response.json().message).toContain('not found');
-    } else {
-      const body = response.json();
-      expect(body).toBeTypeOf('object');
-      expect(body).toHaveProperty('countries');
-    }
+    expect(response.statusCode).toBe(200);
+    const body = response.json();
+    expect(body).toBeTypeOf('object');
+    expect(body.countries).toEqual(['USA', 'CHN', 'JPN']);
+    expect(body.items.map((item: { countryCode: string }) => item.countryCode)).toEqual(['USA', 'CHN', 'JPN']);
 
     await app.close();
   });
 
-  it.todo('returns stable ordering for compare endpoint results');
-  it.todo('validates malformed indicator/country query combinations');
+  it('validates malformed indicator/country query combinations', async () => {
+    const app = createApp();
+
+    const response = await app.inject({
+      method: 'GET',
+      url: '/api/v1/compare?countries=US'
+    });
+
+    expect(response.statusCode).toBe(400);
+    expect(response.json()).toMatchObject({
+      code: 'INVALID_COMPARE_QUERY',
+      message: 'Invalid compare query parameters'
+    });
+
+    await app.close();
+  });
 });
