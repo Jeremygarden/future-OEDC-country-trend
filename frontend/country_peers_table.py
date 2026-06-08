@@ -1,17 +1,3 @@
-"""Stockpeers-style country peer comparison table.
-
-Renders one row per country with KPI columns and an inline sparkline column,
-mirroring the layout shown in https://demo-stockpeers.streamlit.app .
-
-The table is driven by ``streamlit.column_config`` so users can click column
-headers to sort. The sparkline column uses ``LineChartColumn`` (requires
-Streamlit >= 1.30; available in the project's pinned 1.41+).
-
-Public API
-----------
-``render_country_peers_table(chosen, year_range)`` — drop-in replacement for
-the parent app's old ``render_country_table()`` call.
-"""
 from __future__ import annotations
 
 import sys
@@ -27,126 +13,162 @@ if str(_HERE) not in sys.path:
 
 from data_client import (  # noqa: E402
     COUNTRY_META,
+    DIMENSION_GROUPS,
     INDICATORS,
+    format_value as dc_format_value,
     get_indicator_timeseries,
 )
 
-# --------------------------------------------------------------------------- #
-# Style constants
-# --------------------------------------------------------------------------- #
-
-# Green / red / neutral used for YoY arrows. Matches the stockpeers palette
-# and is friendly to both light- and dark-mode Streamlit themes.
 COLOR_UP = "#16a34a"
 COLOR_DOWN = "#dc2626"
 COLOR_FLAT = "#64748b"
 
-# Default indicator that drives the sparkline column. The user can switch
-# this with a horizontal ``st.radio`` rendered above the table.
 DEFAULT_SPARK_INDICATOR = "gdp"
 
-# Stable column order. The "Sparkline" column floats just after country
-# metadata so the eye reads identity -> trend -> KPIs (matches stockpeers).
-_KPI_KEYS: list[str] = list(INDICATORS.keys())
+GROUP_ABBR = {
+    "economy": "E",
+    "trade_finance": "T",
+    "society": "S",
+    "innovation_environment": "I",
+}
 
 
-# --------------------------------------------------------------------------- #
-# Formatting helpers (pure, easily unit-testable)
-# --------------------------------------------------------------------------- #
+def _indicator_to_group_abbr() -> dict[str, str]:
+    out: dict[str, str] = {}
+    for group in DIMENSION_GROUPS:
+        abbr = GROUP_ABBR.get(str(group.get("key")), str(group.get("label", ""))[:1].upper())
+        for key in group.get("indicators", []):
+            out[str(key)] = abbr
+    return out
 
 
-def _missing() -> str:
-    """Placeholder rendered for cells with no data."""
-    return "—"
+def _base_label(indicator_key: str) -> str:
+    return INDICATORS[indicator_key]["label"].split(" (")[0]
+
+
+def _column_label(indicator_key: str) -> str:
+    abbr = _indicator_to_group_abbr().get(indicator_key, "?")
+    return f"{abbr} · {_base_label(indicator_key)}"
 
 
 def format_value(indicator_key: str, value: float | None) -> str:
-    """Format a single indicator value per the style rules.
-
-    - ``gdp``           → ``"23.45 T$"`` (2 decimals, trillions)
-    - ``energy``        → ``"6,800 kgoe"`` (thousands separator)
-    - everything else   → ``"3.21%"`` (2 decimals, percent)
-    """
-    if value is None or (isinstance(value, float) and pd.isna(value)):
-        return _missing()
+    if value is None or pd.isna(value):
+        return "—"
     if indicator_key == "gdp":
-        return f"{value:.2f} T$"
+        return f"{float(value):.2f} T$"
     if indicator_key == "energy":
-        return f"{value:,.0f} kgoe"
-    # Default: percent (cpi, unemployment, debt, tax, fdi, savings, health).
-    return f"{value:.2f}%"
+        return f"{float(value):,.0f} kgoe"
+    raw = dc_format_value(indicator_key, float(value))
+    return raw.replace(" %", "%")
+
+
+def _good_when(indicator_key: str) -> str:
+    return str(INDICATORS.get(indicator_key, {}).get("good_when", "neutral"))
+
+
+def _colored_arrow_html(indicator_key: str, yoy_pct: float | None) -> str:
+    if yoy_pct is None or pd.isna(yoy_pct):
+        return ""
+
+    direction_up = yoy_pct > 0
+    direction_down = yoy_pct < 0
+    if not (direction_up or direction_down):
+        return f"<span style='color:{COLOR_FLAT}'>● 0.00%</span>"
+
+    gw = _good_when(indicator_key)
+    if gw == "high":
+        color = COLOR_UP if direction_up else COLOR_DOWN
+    elif gw == "low":
+        color = COLOR_DOWN if direction_up else COLOR_UP
+    else:
+        color = COLOR_FLAT
+
+    arrow = "▲" if direction_up else "▼"
+    return f"<span style='color:{color}'>{arrow} {abs(float(yoy_pct)):.2f}%</span>"
 
 
 def format_yoy(yoy_pct: float | None) -> str:
-    """Format a YoY percentage with a colored ▲/▼ arrow as inline HTML.
-
-    Returns ``"—"`` when input is None/NaN. The returned string contains a
-    ``<span style="color:...">`` so it must be rendered via ``st.markdown``
-    (or any HTML-aware sink). It is intentionally NOT used inside
-    ``st.dataframe`` cells, which only support plain text.
-    """
-    if yoy_pct is None or (isinstance(yoy_pct, float) and pd.isna(yoy_pct)):
-        return _missing()
+    if yoy_pct is None or pd.isna(yoy_pct):
+        return "—"
     if yoy_pct > 0:
-        return f"<span style='color:{COLOR_UP}'>▲ {yoy_pct:+.2f}%</span>"
+        return f"<span style='color:{COLOR_UP}'>▲ +{abs(float(yoy_pct)):.2f}%</span>"
     if yoy_pct < 0:
-        return f"<span style='color:{COLOR_DOWN}'>▼ {yoy_pct:+.2f}%</span>"
+        return f"<span style='color:{COLOR_DOWN}'>▼ -{abs(float(yoy_pct)):.2f}%</span>"
     return f"<span style='color:{COLOR_FLAT}'>● 0.00%</span>"
 
 
+def _plain_arrow(indicator_key: str, yoy_pct: float | None) -> str:
+    if yoy_pct is None or pd.isna(yoy_pct):
+        return ""
+    if yoy_pct > 0:
+        return f"▲ +{abs(float(yoy_pct)):.2f}%"
+    if yoy_pct < 0:
+        return f"▼ -{abs(float(yoy_pct)):.2f}%"
+    return "● 0.00%"
+
+
 def format_cell(indicator_key: str, value: float | None, yoy_pct: float | None) -> str:
-    """Combined "value + arrow + YoY%" string for one indicator cell.
-
-    Uses plain-text arrows so the result is safe to drop straight into a
-    ``st.dataframe`` ``TextColumn`` (which does not allow HTML).
-    """
-    val_str = format_value(indicator_key, value)
-    if yoy_pct is None or (isinstance(yoy_pct, float) and pd.isna(yoy_pct)):
-        arrow = ""
-    elif yoy_pct > 0:
-        arrow = f"  ▲ {yoy_pct:+.2f}%"
-    elif yoy_pct < 0:
-        arrow = f"  ▼ {yoy_pct:+.2f}%"
-    else:
-        arrow = "  ● 0.00%"
-    return f"{val_str}{arrow}"
-
-
-# --------------------------------------------------------------------------- #
-# Data assembly
-# --------------------------------------------------------------------------- #
-
-
-def _series_for(
-    iso3: str,
-    indicator_key: str,
-    year_range: tuple[int, int],
-) -> pd.DataFrame:
-    """One-country, one-indicator long DataFrame (year, value)."""
-    return get_indicator_timeseries(
-        [iso3], indicator_key, year_start=year_range[0], year_end=year_range[1]
-    )
+    value_text = format_value(indicator_key, value)
+    arrow_text = _plain_arrow(indicator_key, yoy_pct)
+    return value_text if not arrow_text else f"{value_text}  {arrow_text}"
 
 
 def _latest_and_yoy(df: pd.DataFrame) -> tuple[float | None, float | None, int | None]:
-    """Pull the most-recent value plus a YoY % from a per-country series.
-
-    Returns ``(latest_value, yoy_pct, latest_year)``; any field may be
-    ``None`` when the underlying snapshot has gaps.
-    """
     if df is None or df.empty:
         return None, None, None
     sorted_df = df.sort_values("year")
     latest_row = sorted_df.iloc[-1]
-    latest_val = float(latest_row["value"])
-    latest_year = int(latest_row["year"])
-    if len(sorted_df) < 2:
+    latest_val = float(latest_row["value"]) if pd.notna(latest_row["value"]) else None
+    latest_year = int(latest_row["year"]) if pd.notna(latest_row["year"]) else None
+    if latest_val is None or len(sorted_df) < 2:
         return latest_val, None, latest_year
-    prev_val = float(sorted_df.iloc[-2]["value"])
-    if prev_val == 0:
+
+    prev_row = sorted_df.iloc[-2]
+    prev_val = float(prev_row["value"]) if pd.notna(prev_row["value"]) else None
+    if prev_val in (None, 0):
         return latest_val, None, latest_year
+
     yoy = ((latest_val - prev_val) / abs(prev_val)) * 100.0
     return latest_val, round(yoy, 2), latest_year
+
+
+def _all_indicator_keys_in_group_order() -> list[str]:
+    keys: list[str] = []
+    for group in DIMENSION_GROUPS:
+        for key in group.get("indicators", []):
+            if key in INDICATORS and key not in keys:
+                keys.append(key)
+    # Safety fallback if catalog/group mismatch appears.
+    for key in INDICATORS:
+        if key not in keys:
+            keys.append(key)
+    return keys
+
+
+def _spark_selector() -> str:
+    groups = [g for g in DIMENSION_GROUPS if g.get("indicators")]
+    group_labels = [str(g["label"]) for g in groups]
+    default_group_index = group_labels.index("Economy") if "Economy" in group_labels else 0
+
+    group_label = st.radio(
+        "Sparkline group",
+        options=group_labels,
+        index=default_group_index,
+        horizontal=True,
+        key="peers_spark_group",
+    )
+    selected_group = groups[group_labels.index(group_label)]
+
+    indicator_keys = [k for k in selected_group["indicators"] if k in INDICATORS]
+    indicator_labels = [INDICATORS[k]["label"] for k in indicator_keys]
+    indicator_label = st.radio(
+        "Sparkline indicator",
+        options=indicator_labels,
+        index=0,
+        horizontal=True,
+        key="peers_spark_indicator",
+    )
+    return indicator_keys[indicator_labels.index(indicator_label)]
 
 
 def build_peers_dataframe(
@@ -154,19 +176,7 @@ def build_peers_dataframe(
     year_range: tuple[int, int],
     spark_indicator: str = DEFAULT_SPARK_INDICATOR,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Assemble the wide peer table plus the long-format snapshot view.
-
-    Returns
-    -------
-    (wide_df, long_df)
-        ``wide_df`` — one row per country, columns:
-            ``Country`` (str, "🇺🇸 United States"),
-            ``Region`` (str),
-            ``Sparkline`` (list[float] for ``LineChartColumn``),
-            ``GDP``, ``CPI``, ``Unemployment``, … (pre-formatted strings).
-        ``long_df`` — full snapshot rows for the expander; columns:
-            ``year, iso3, country, indicator, value, source``.
-    """
+    indicator_keys = _all_indicator_keys_in_group_order()
     long_records: list[dict[str, Any]] = []
     wide_records: list[dict[str, Any]] = []
 
@@ -177,24 +187,19 @@ def build_peers_dataframe(
             "Region": meta.get("region", "—"),
         }
 
-        # Sparkline column — values for the user-picked indicator across the
-        # selected year window. Streamlit's LineChartColumn expects a
-        # list-like of numbers per cell.
-        spark_df = _series_for(iso3, spark_indicator, year_range)
+        spark_df = get_indicator_timeseries([iso3], spark_indicator, year_range[0], year_range[1])
         if spark_df is not None and not spark_df.empty:
-            spark_values = spark_df.sort_values("year")["value"].astype(float).tolist()
+            spark_values = spark_df.sort_values("year")["value"].dropna().astype(float).tolist()
         else:
             spark_values = []
         row["Sparkline"] = spark_values
 
-        # KPI columns — latest value + YoY for every indicator.
-        for key in _KPI_KEYS:
-            label = INDICATORS[key]["label"].split(" (")[0]  # e.g. "GDP"
-            ind_df = _series_for(iso3, key, year_range)
-            val, yoy, _year = _latest_and_yoy(ind_df)
+        for key in indicator_keys:
+            label = _base_label(key)
+            ind_df = get_indicator_timeseries([iso3], key, year_range[0], year_range[1])
+            val, yoy, _ = _latest_and_yoy(ind_df)
             row[label] = format_cell(key, val, yoy)
 
-            # Long-format dump for the expander below the table.
             if ind_df is not None and not ind_df.empty:
                 long_records.extend(ind_df.to_dict("records"))
 
@@ -207,134 +212,110 @@ def build_peers_dataframe(
     return wide_df, long_df
 
 
-# --------------------------------------------------------------------------- #
-# Column config (Streamlit native sortable table)
-# --------------------------------------------------------------------------- #
-
-
 def _column_config(spark_indicator: str) -> dict[str, Any]:
-    """Build the ``column_config`` mapping for ``st.dataframe``."""
-    spark_meta = INDICATORS.get(spark_indicator, {"label": "Trend", "unit": ""})
+    spark_meta = INDICATORS.get(spark_indicator, {"label": "Trend"})
     cfg: dict[str, Any] = {
-        "Country": st.column_config.TextColumn(
-            "Country",
-            help="Flag + country name. Click to sort alphabetically.",
-            width="medium",
-        ),
-        "Region": st.column_config.TextColumn(
-            "Region",
-            width="small",
-        ),
+        "Country": st.column_config.TextColumn("Country", width="medium"),
+        "Region": st.column_config.TextColumn("Region", width="small"),
         "Sparkline": st.column_config.LineChartColumn(
             f"Trend · {spark_meta['label']}",
-            help=(
-                f"Per-country trend of {spark_meta['label']} over the selected "
-                "year range. Pick a different indicator with the radio above."
-            ),
             width="medium",
         ),
     }
-    # KPI text columns — sortable lexicographically (good enough for a peer
-    # table; numeric sort within a single unit is preserved because we
-    # zero-pad-free format with the same template).
-    for key in _KPI_KEYS:
-        label = INDICATORS[key]["label"].split(" (")[0]
-        cfg[label] = st.column_config.TextColumn(
-            label,
-            help=f"{INDICATORS[key]['label']} — latest value + YoY change.",
+
+    for key in _all_indicator_keys_in_group_order():
+        base_label = _base_label(key)
+        cfg[base_label] = st.column_config.TextColumn(
+            _column_label(key),
+            help=f"{INDICATORS[key]['label']} — latest value + YoY.",
             width="small",
         )
     return cfg
 
 
-# --------------------------------------------------------------------------- #
-# Streamlit render (public entrypoint)
-# --------------------------------------------------------------------------- #
+def _cell_style_for(indicator_key: str, text: Any) -> str:
+    if not isinstance(text, str):
+        return ""
+    if "▲" in text:
+        if _good_when(indicator_key) == "high":
+            return f"color: {COLOR_UP};"
+        if _good_when(indicator_key) == "low":
+            return f"color: {COLOR_DOWN};"
+        return f"color: {COLOR_FLAT};"
+    if "▼" in text:
+        if _good_when(indicator_key) == "high":
+            return f"color: {COLOR_DOWN};"
+        if _good_when(indicator_key) == "low":
+            return f"color: {COLOR_UP};"
+        return f"color: {COLOR_FLAT};"
+    if "●" in text:
+        return f"color: {COLOR_FLAT};"
+    return ""
 
 
-def render_country_peers_table(
-    chosen: list[str],
-    year_range: tuple[int, int],
-) -> None:
-    """Render the stockpeers-style peer comparison table.
+def _yoy_legend() -> None:
+    entries = []
+    for key in _all_indicator_keys_in_group_order():
+        label = _column_label(key)
+        sample = _colored_arrow_html(key, 1.23)
+        if _good_when(key) == "low":
+            sample_down = _colored_arrow_html(key, -1.23)
+            entries.append(f"<li>{label}: {sample} / {sample_down}</li>")
+    if not entries:
+        entries = [
+            f"<li>High-good indicators: <span style='color:{COLOR_UP}'>▲</span> up is good, <span style='color:{COLOR_DOWN}'>▼</span> down is bad</li>",
+            f"<li>Low-good indicators: <span style='color:{COLOR_DOWN}'>▲</span> up is bad, <span style='color:{COLOR_UP}'>▼</span> down is good</li>",
+            f"<li>Neutral indicators: <span style='color:{COLOR_FLAT}'>▲/▼</span> neutral</li>",
+        ]
 
-    Drop-in replacement for the previous ``render_country_table()`` call in
-    ``frontend/app.py``. Safe for an empty ``chosen`` selection (renders an
-    informational placeholder instead of erroring).
-    """
+    st.markdown(
+        "<small><b>YoY color rule</b><ul style='margin-top:0.2rem'>"
+        + "".join(entries[:4])
+        + "</ul></small>",
+        unsafe_allow_html=True,
+    )
+
+
+def render_country_peers_table(chosen: list[str], year_range: tuple[int, int]) -> None:
     if not chosen:
         st.info("Select at least one country in the sidebar to populate the table.")
         return
 
     st.subheader("📋 Country peer comparison")
-    st.caption(
-        "Side-by-side macro snapshot for the selected countries. "
-        "Each KPI cell shows the latest value plus YoY change "
-        "(▲ green = up, ▼ red = down)."
-    )
-
-    # Indicator selector — drives the sparkline column only. Stored in
-    # session state so the choice survives reruns from the sidebar.
-    radio_options = list(INDICATORS.keys())
-    radio_labels = {k: INDICATORS[k]["label"].split(" (")[0] for k in radio_options}
-    default_index = (
-        radio_options.index(DEFAULT_SPARK_INDICATOR)
-        if DEFAULT_SPARK_INDICATOR in radio_options
-        else 0
-    )
-    spark_indicator = st.radio(
-        "Sparkline indicator",
-        options=radio_options,
-        index=default_index,
-        format_func=lambda k: radio_labels[k],
-        horizontal=True,
-        key="peers_table_spark_indicator",
-        help="Pick which indicator's trend is plotted in the Sparkline column.",
-    )
+    spark_indicator = _spark_selector()
 
     with st.spinner("Building peer table…"):
-        try:
-            wide_df, long_df = build_peers_dataframe(chosen, year_range, spark_indicator)
-        except Exception as exc:  # noqa: BLE001 — defensive UI boundary
-            st.error(f"Failed to build peer table: {exc}")
-            return
+        wide_df, long_df = build_peers_dataframe(chosen, year_range, spark_indicator)
 
     if wide_df.empty:
         st.info("No data available for the selected countries / year range.")
         return
 
+    metric_cols = _all_indicator_keys_in_group_order()
+    metric_base_labels = [_base_label(k) for k in metric_cols]
+
+    def _style_col(series: pd.Series) -> list[str]:
+        indicator_key = next((k for k in metric_cols if _base_label(k) == series.name), None)
+        if indicator_key is None:
+            return [""] * len(series)
+        return [_cell_style_for(indicator_key, v) for v in series]
+
+    styled = wide_df.style.apply(_style_col, subset=metric_base_labels)
+
     st.dataframe(
-        wide_df,
+        styled,
         column_config=_column_config(spark_indicator),
         use_container_width=True,
         hide_index=True,
     )
 
-    # Legend for the YoY arrows. Plain HTML via st.markdown so the colors
-    # render. Keeps the dataframe cells pure-text (Streamlit's TextColumn
-    # does not support inline HTML / colors).
-    st.markdown(
-        f"<small>YoY legend: "
-        f"<span style='color:{COLOR_UP}'>▲ up</span> · "
-        f"<span style='color:{COLOR_DOWN}'>▼ down</span> · "
-        f"<span style='color:{COLOR_FLAT}'>● flat / no data</span>"
-        f"</small>",
-        unsafe_allow_html=True,
-    )
+    _yoy_legend()
 
     with st.expander("Raw data (long format)", expanded=False):
         if long_df.empty:
             st.info("No long-format rows for the current selection.")
         else:
-            st.caption(
-                f"{len(long_df):,} rows · {long_df['indicator'].nunique()} indicators "
-                f"· {long_df['iso3'].nunique()} countries"
-            )
-            st.dataframe(
-                long_df,
-                use_container_width=True,
-                hide_index=True,
-            )
+            st.dataframe(long_df, use_container_width=True, hide_index=True)
 
 
 __all__ = [
@@ -343,4 +324,5 @@ __all__ = [
     "format_value",
     "format_yoy",
     "format_cell",
+    "DEFAULT_SPARK_INDICATOR",
 ]

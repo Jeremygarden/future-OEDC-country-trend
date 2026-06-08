@@ -1,260 +1,232 @@
-"""Stockpeers-style Overview tab for the country-comparison dashboard.
-
-Layout:
-  1. Peer cards grid     — one card per selected country (flag, name, latest GDP, YoY delta)
-  2. Indicator pill bar  — st.radio to switch which indicator drives the hero chart
-  3. Hero chart          — full-width line chart for the selected primary indicator
-  4. 2x2 mini grid       — fixed secondary indicators (CPI, Unemployment, FDI, Health)
-
-Public API:
-    render_overview(chosen: list[str], year_range: tuple[int, int]) -> None
-
-This is the only module that should be touched by the overview subagent;
-``app.py`` swaps its current ``render_country_overview`` + ``render_comparison_charts``
-calls for a single ``render_overview(chosen, year_range)``.
-"""
 from __future__ import annotations
 
-from typing import Iterable
+from pathlib import Path
+from typing import Any
+import sys
 
 import pandas as pd
 import streamlit as st
 
-from charts import bar_chart, line_chart, mini_line_chart
+_HERE = Path(__file__).resolve().parent
+if str(_HERE) not in sys.path:
+    sys.path.insert(0, str(_HERE))
+
+from charts import line_chart, mini_line_chart
 from data_client import (
     COUNTRY_META,
+    DIMENSION_GROUPS,
     INDICATORS,
+    format_value as dc_format_value,
     get_indicator_timeseries,
     latest_value_per_country,
-    rank_countries,
 )
 
-# Indicators surfaced by the indicator pill bar (the "hero" candidates).
-HERO_INDICATOR_KEYS: list[str] = ["gdp", "cpi", "unemployment", "debt"]
+HERO_INDICATOR_KEYS: list[str] = [
+    key for group in DIMENSION_GROUPS for key in group.get("indicators", []) if key in INDICATORS
+]
+MINI_GRID_KEYS: list[str] = []
 
-# Fixed 2x2 grid of secondary indicators — independent of the hero choice.
-MINI_GRID_KEYS: list[str] = ["cpi", "unemployment", "fdi", "health"]
-
-
-# ---------------------------------------------------------------------------
-# Pure helpers (covered by frontend/tests/test_overview_page.py)
-# ---------------------------------------------------------------------------
 
 def format_value(value: float | None, unit: str) -> str:
-    """Format a KPI numeric value for a metric card.
-
-    - GDP (``unit == "T$"``) is shown to two decimals with the unit suffix.
-    - Other units are shown to two decimals with a leading unit/percent.
-    - ``None`` collapses to an em-dash.
-    """
-    if value is None:
+    if value is None or pd.isna(value):
         return "—"
     if unit == "T$":
-        return f"${value:.2f}T"
+        return f"${float(value):.2f}T"
     if unit == "%":
-        return f"{value:.2f}%"
-    return f"{value:.2f} {unit}".strip()
+        return f"{float(value):.2f}%"
+    return f"{float(value):.2f} {unit}".strip()
+
+
+def _fmt(indicator_key: str, value: float | None) -> str:
+    return dc_format_value(indicator_key, value)
 
 
 def format_delta(yoy_pct: float | None) -> str:
-    """Format a YoY% delta for ``st.metric``'s ``delta`` argument."""
-    if yoy_pct is None:
+    if yoy_pct is None or pd.isna(yoy_pct):
         return "—"
     return f"{yoy_pct:+.2f}% YoY"
 
 
 def leader_caption(df_latest: pd.DataFrame, unit: str) -> str:
-    """Return a short ``'🇺🇸 USA leads · $24.50T'``-style caption.
-
-    Picks the row with the highest ``value`` from a ranked-latest DataFrame.
-    Returns an empty string if no data is available.
-    """
     if df_latest is None or df_latest.empty:
         return ""
-    # Sort defensively in case the caller did not.
-    sorted_df = df_latest.sort_values("value", ascending=False)
-    top = sorted_df.iloc[0]
-    iso3 = str(top["iso3"])
-    cmeta = COUNTRY_META.get(iso3, {"flag": "", "name": iso3})
-    return f"{cmeta['flag']} {iso3} leads · {format_value(float(top['value']), unit)}"
+    leader = df_latest.sort_values("value", ascending=False).iloc[0]
+    iso3 = str(leader["iso3"])
+    return f"{iso3} leads · {format_value(float(leader['value']), unit)}"
 
 
 def safe_indicator_label(indicator_key: str) -> str:
-    """Return the human-readable label for an indicator key, with a fallback."""
-    meta = INDICATORS.get(indicator_key)
-    if meta is None:
-        return indicator_key.upper()
-    return meta["label"]
+    return str(INDICATORS.get(indicator_key, {}).get("label", indicator_key.upper()))
 
 
-# ---------------------------------------------------------------------------
-# Internal render helpers
-# ---------------------------------------------------------------------------
-
-def _render_peer_card(iso3: str, gdp_latest: pd.DataFrame) -> None:
-    """Render one country card with flag, name, latest GDP, YoY delta."""
-    cmeta = COUNTRY_META.get(iso3, {"name": iso3, "flag": "", "region": "—"})
-    row = gdp_latest[gdp_latest["iso3"] == iso3]
-    if row.empty:
-        value = None
-        yoy = None
-        year = None
-    else:
-        r = row.iloc[0]
-        value = float(r["value"])
-        yoy = float(r["yoy_pct"]) if pd.notna(r["yoy_pct"]) else None
-        year = int(r["year"]) if pd.notna(r["year"]) else None
-
-    with st.container(border=True):
-        st.markdown(
-            f"<div style='font-size:0.95rem; color:#475569; margin-bottom:2px;'>"
-            f"{cmeta['flag']} <b>{cmeta['name']}</b> "
-            f"<span style='color:#94a3b8; font-size:0.8rem;'>({iso3})</span>"
-            f"</div>",
-            unsafe_allow_html=True,
-        )
-        st.metric(
-            label=f"GDP · {year if year else '—'}",
-            value=format_value(value, INDICATORS["gdp"]["unit"]),
-            delta=format_delta(yoy),
-        )
+def _group_options() -> tuple[list[str], dict[str, dict[str, Any]]]:
+    groups = [g for g in DIMENSION_GROUPS if g.get("indicators")]
+    by_label = {str(g["label"]): g for g in groups}
+    return list(by_label.keys()), by_label
 
 
-def _render_peer_cards(chosen: list[str], year_range: tuple[int, int]) -> None:
-    """Top row: one peer card per country (flag, name, latest GDP, YoY delta)."""
+def _good_when_sort_ascending(indicator_key: str) -> bool:
+    good_when = INDICATORS.get(indicator_key, {}).get("good_when", "neutral")
+    return good_when == "low"
+
+
+def _pick_leader(df_latest: pd.DataFrame, indicator_key: str) -> pd.Series | None:
+    if df_latest is None or df_latest.empty:
+        return None
+    ascending = _good_when_sort_ascending(indicator_key)
+    ranked = df_latest.sort_values("value", ascending=ascending)
+    return ranked.iloc[0]
+
+
+def _yoy_delta_text(yoy_pct: float | None) -> str:
+    if yoy_pct is None or pd.isna(yoy_pct):
+        return "—"
+    arrow = "▲" if yoy_pct > 0 else ("▼" if yoy_pct < 0 else "●")
+    return f"{arrow} {abs(float(yoy_pct)):.2f}% YoY"
+
+
+def _peer_cards(chosen: list[str], year_range: tuple[int, int]) -> None:
     st.subheader("🏛️ Country peers")
-    try:
-        gdp_df = get_indicator_timeseries(chosen, "gdp", year_range[0], year_range[1])
-    except Exception as exc:  # noqa: BLE001 — defensive UI boundary
-        st.error(f"Failed to load GDP peer cards: {exc}")
-        return
-
-    gdp_latest = latest_value_per_country(gdp_df)
-    if gdp_latest.empty:
+    gdp_df = get_indicator_timeseries(chosen, "gdp", year_range[0], year_range[1])
+    latest = latest_value_per_country(gdp_df)
+    if latest.empty:
         st.info("No GDP data available for the selected countries / year range.")
         return
 
     cols = st.columns(len(chosen))
     for col, iso3 in zip(cols, chosen):
         with col:
-            _render_peer_card(iso3, gdp_latest)
+            meta = COUNTRY_META.get(iso3, {"name": iso3, "flag": ""})
+            row = latest[latest["iso3"] == iso3]
+            value = None
+            yoy = None
+            if not row.empty:
+                value = float(row.iloc[0]["value"])
+                yoy = float(row.iloc[0]["yoy_pct"]) if pd.notna(row.iloc[0]["yoy_pct"]) else None
+            st.metric(
+                label=f"{meta.get('flag', '')} {meta.get('name', iso3)}",
+                value=_fmt("gdp", value),
+                delta=_yoy_delta_text(yoy),
+            )
 
 
-def _render_indicator_picker(default_key: str = "gdp") -> str:
-    """Horizontal pill bar to choose the hero-chart indicator. Returns the key."""
-    options = HERO_INDICATOR_KEYS
-    labels = [safe_indicator_label(k) for k in options]
-    label_to_key = dict(zip(labels, options))
-    default_label = safe_indicator_label(default_key)
-    default_index = labels.index(default_label) if default_label in labels else 0
-    chosen_label = st.radio(
-        "Hero indicator",
-        options=labels,
-        index=default_index,
+def _hero_picker() -> tuple[dict[str, Any], str]:
+    group_labels, groups_by_label = _group_options()
+    default_group_index = group_labels.index("Economy") if "Economy" in group_labels else 0
+
+    selected_group_label = st.radio(
+        "Indicator group",
+        options=group_labels,
+        index=default_group_index,
         horizontal=True,
-        label_visibility="collapsed",
-        key="overview_hero_indicator",
+        key="overview_group_radio",
     )
-    return label_to_key.get(chosen_label, default_key)
+    selected_group = groups_by_label[selected_group_label]
+
+    indicator_keys = [k for k in selected_group["indicators"] if k in INDICATORS]
+    indicator_labels = [INDICATORS[k]["label"] for k in indicator_keys]
+    selected_indicator_label = st.radio(
+        "Indicator",
+        options=indicator_labels,
+        index=0,
+        horizontal=True,
+        key="overview_indicator_radio",
+    )
+    selected_indicator = indicator_keys[indicator_labels.index(selected_indicator_label)]
+    return selected_group, selected_indicator
 
 
-def _render_hero_chart(
-    chosen: list[str],
-    indicator_key: str,
-    year_range: tuple[int, int],
-) -> None:
-    """Full-width hero line chart for the picked indicator."""
+def _hero_chart(chosen: list[str], year_range: tuple[int, int], indicator_key: str) -> None:
     meta = INDICATORS[indicator_key]
-    try:
-        df = get_indicator_timeseries(chosen, indicator_key, year_range[0], year_range[1])
-    except Exception as exc:  # noqa: BLE001
-        st.error(f"Failed to load {meta['label']}: {exc}")
+    df = get_indicator_timeseries(chosen, indicator_key, year_range[0], year_range[1])
+    fig = line_chart(df, meta["label"], meta["unit"])
+    fig.update_layout(height=420)
+    st.plotly_chart(fig, use_container_width=True)
+
+    latest = latest_value_per_country(df)
+    leader = _pick_leader(latest, indicator_key)
+    if leader is None:
+        st.caption("No latest-value delta available in this range.")
         return
 
-    source_tag = "—"
-    if df is not None and not df.empty and "source" in df.columns:
-        source_tag = df["source"].mode().iloc[0]
+    leader_iso3 = str(leader["iso3"])
+    leader_meta = COUNTRY_META.get(leader_iso3, {"name": leader_iso3})
+    latest_value = float(leader["value"])
+    prev_value = float(leader["prev_value"]) if pd.notna(leader["prev_value"]) else None
+    abs_delta = None if prev_value is None else (latest_value - prev_value)
 
-    st.markdown(
-        f"### 📊 {meta['label']} "
-        f"<span style='color:#94a3b8; font-size:0.85rem; font-weight:400;'>"
-        f"· source: <code>{source_tag}</code> · unit: <code>{meta['unit']}</code>"
-        f"</span>",
-        unsafe_allow_html=True,
+    # KPI delta uses data_client.format_value to keep number formatting consistent.
+    delta_text = "—" if abs_delta is None else (
+        f"{('+' if abs_delta >= 0 else '')}{_fmt(indicator_key, abs_delta)} vs prev year"
+    )
+    st.metric(
+        label=f"Leader: {leader_meta.get('name', leader_iso3)}",
+        value=_fmt(indicator_key, latest_value),
+        delta=delta_text,
     )
 
-    line_col, bar_col = st.columns([3, 1])
-    with line_col:
-        fig = line_chart(df, meta["label"], meta["unit"])
-        fig.update_layout(height=420)
-        st.plotly_chart(fig, use_container_width=True)
-    with bar_col:
-        bar = bar_chart(df, f"Latest {meta['label']}", meta["unit"])
-        bar.update_layout(height=420, showlegend=False)
-        st.plotly_chart(bar, use_container_width=True)
+
+def _mini_keys_for_group(current_group_key: str, hero_indicator: str, target_cells: int = 6) -> list[str]:
+    group_list = [g for g in DIMENSION_GROUPS if g.get("indicators")]
+    idx = next((i for i, g in enumerate(group_list) if g.get("key") == current_group_key), 0)
+
+    siblings = [k for k in group_list[idx]["indicators"] if k != hero_indicator and k in INDICATORS]
+    picked: list[str] = list(siblings)
+
+    # Fill to 6 cells by cycling through next groups in order, taking indicators in-group order.
+    # This stays deterministic and keeps the hero's own group indicators first.
+    g_off = 1
+    while len(picked) < target_cells and g_off <= len(group_list):
+        next_group = group_list[(idx + g_off) % len(group_list)]
+        for key in next_group["indicators"]:
+            if key in INDICATORS and key not in picked and key != hero_indicator:
+                picked.append(key)
+                if len(picked) >= target_cells:
+                    break
+        g_off += 1
+    return picked[:target_cells]
 
 
-def _render_mini_cell(
-    chosen: list[str],
-    indicator_key: str,
-    year_range: tuple[int, int],
-) -> None:
-    """One cell of the 2x2 secondary-indicator grid."""
+def _mini_cell(chosen: list[str], year_range: tuple[int, int], indicator_key: str) -> None:
     meta = INDICATORS[indicator_key]
     with st.container(border=True):
-        try:
-            df = get_indicator_timeseries(chosen, indicator_key, year_range[0], year_range[1])
-        except Exception as exc:  # noqa: BLE001
-            st.error(f"{meta['label']}: {exc}")
-            return
-
+        df = get_indicator_timeseries(chosen, indicator_key, year_range[0], year_range[1])
         fig = mini_line_chart(df, meta["label"], meta["unit"])
+        fig.update_layout(height=180, showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
 
         latest = latest_value_per_country(df)
-        caption = leader_caption(latest, meta["unit"])
-        if caption:
-            st.caption(caption)
+        leader = _pick_leader(latest, indicator_key)
+        if leader is None:
+            st.caption("No latest data")
+            return
+        leader_iso3 = str(leader["iso3"])
+        leader_name = COUNTRY_META.get(leader_iso3, {"name": leader_iso3}).get("name", leader_iso3)
+        st.caption(f"{leader_name} · {_fmt(indicator_key, float(leader['value']))}")
 
 
-def _render_mini_grid(chosen: list[str], year_range: tuple[int, int]) -> None:
-    """Fixed 2x2 grid of secondary indicators."""
-    st.markdown("### 🧭 Secondary indicators")
-    keys = MINI_GRID_KEYS
+def _mini_grid(chosen: list[str], year_range: tuple[int, int], current_group_key: str, hero_indicator: str) -> None:
+    st.markdown("### 📎 Related indicators")
+    keys = _mini_keys_for_group(current_group_key, hero_indicator, target_cells=6)
+    for row_start in range(0, 6, 3):
+        cols = st.columns(3)
+        for i, col in enumerate(cols):
+            idx = row_start + i
+            with col:
+                if idx < len(keys):
+                    _mini_cell(chosen, year_range, keys[idx])
 
-    row1 = st.columns(2)
-    row2 = st.columns(2)
-    cells = [row1[0], row1[1], row2[0], row2[1]]
-    for cell, key in zip(cells, keys):
-        with cell:
-            _render_mini_cell(chosen, key, year_range)
-
-
-# ---------------------------------------------------------------------------
-# Public entrypoint
-# ---------------------------------------------------------------------------
 
 def render_overview(chosen: list[str], year_range: tuple[int, int]) -> None:
-    """Render the stockpeers-style Overview tab.
-
-    Args:
-        chosen: ISO3 codes for the countries to compare (peer set).
-        year_range: inclusive (start_year, end_year) window applied to every chart.
-    """
     if not chosen:
         st.warning("Select at least one country in the sidebar to begin.")
         return
 
-    # 1. Peer cards grid
-    _render_peer_cards(chosen, year_range)
-
+    _peer_cards(chosen, year_range)
     st.divider()
 
-    # 2. Indicator pill bar + 3. Hero chart
-    hero_key = _render_indicator_picker(default_key="gdp")
-    _render_hero_chart(chosen, hero_key, year_range)
+    selected_group, selected_indicator = _hero_picker()
+    _hero_chart(chosen, year_range, selected_indicator)
 
     st.divider()
-
-    # 4. 2x2 mini-chart grid (fixed indicators, independent of hero pick)
-    _render_mini_grid(chosen, year_range)
+    _mini_grid(chosen, year_range, str(selected_group["key"]), selected_indicator)
