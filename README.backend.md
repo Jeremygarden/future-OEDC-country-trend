@@ -85,6 +85,16 @@ Data source resolution order:
 - `yearsAhead` integer 1..20 (default 5)
 - `method` `linear` or `cagr` (default `linear`)
 
+## Docker deployment
+
+Build and run with Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+The API is exposed at `http://localhost:3000`.
+
 ## Scripts
 
 - `npm run dev` - run with watch mode

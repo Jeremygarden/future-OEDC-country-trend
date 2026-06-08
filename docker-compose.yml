@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  api:
+    build: .
+    image: future-oedc-country-trend-backend:latest
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+      TIMESERIES_DATA_PATH: ${TIMESERIES_DATA_PATH:-fixtures/timeseries.sample.json}
+      TIMESERIES_CACHE_MAX_ENTRIES: ${TIMESERIES_CACHE_MAX_ENTRIES:-200}
+      TIMESERIES_CACHE_TTL_MS: ${TIMESERIES_CACHE_TTL_MS:-60000}
+    restart: unless-stopped
