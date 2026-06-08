@@ -5,13 +5,17 @@ const errorHandlerPluginRaw: FastifyPluginAsync = async (app) => {
   app.setErrorHandler((error, request, reply) => {
     const statusCode = (error as { statusCode?: number }).statusCode ?? 500;
     const namedError = error instanceof Error ? error : new Error('Unknown error');
+    const code = (error as { code?: string }).code ?? (statusCode >= 500 ? 'INTERNAL_ERROR' : 'REQUEST_ERROR');
+    const details = (error as { details?: unknown }).details;
 
-    request.log.error({ err: error, statusCode }, 'request failed');
+    request.log.error({ err: error, statusCode, code }, 'request failed');
 
     reply.status(statusCode).send({
       error: statusCode >= 500 ? 'Internal Server Error' : namedError.name,
+      code,
       message: statusCode >= 500 ? 'Unexpected server error' : namedError.message,
-      statusCode
+      statusCode,
+      details: statusCode >= 500 ? undefined : details
     });
   });
 };

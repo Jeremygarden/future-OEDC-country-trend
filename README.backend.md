@@ -49,6 +49,9 @@ Health endpoint:
 
 ### `/api/v1/timeseries` query params
 
+- Response includes `cached: true|false` and current cache stats.
+- Invalid year windows (`fromYear > toYear`) return structured `400` error with code `INVALID_YEAR_RANGE`.
+
 - `country` ISO country code (e.g. `US`, `CN`, `JPN`)
 - `indicator` metric key/code (e.g. `GDP`)
 - `fromYear` integer >= 1900
