@@ -118,4 +118,31 @@ pytest tests/ -v
 
 ---
 
+## Frontend (Streamlit) — see `frontend/README.md`
+
+A multi-country comparison dashboard inspired by stockpeers-style
+side-by-side analysis. Multi-select countries, year-range slider, KPI
+cards (latest · YoY · rank), themed Plotly charts, six per-dimension
+pages (Debt / Energy / Taxation / FDI / Household savings / Health
+spending), and graceful fallback when the backend is offline.
+
+```bash
+pip install -r frontend/requirements.txt
+streamlit run frontend/app.py
+```
+
+Backend URL is configurable:
+
+```bash
+BACKEND_API_URL=http://localhost:3000/api/v1 streamlit run frontend/app.py
+```
+
+Frontend unit tests:
+
+```bash
+pytest frontend/tests/ -v
+```
+
+---
+
 ## Backend (TypeScript Fastify) — see README.backend.md

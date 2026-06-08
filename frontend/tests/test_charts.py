@@ -53,13 +53,13 @@ def test_line_chart_handles_empty_dataframe() -> None:
 def test_bar_chart_collapses_to_latest_per_country() -> None:
     fig = bar_chart(_sample_df(), title="Latest GDP", y_label="T$")
     assert isinstance(fig, go.Figure)
-    # px.bar produces a single trace with one bar per country (USA, CHN).
-    assert len(fig.data) >= 1
-    xs = list(fig.data[0].x)
-    ys = list(fig.data[0].y)
-    assert sorted(xs) == ["CHN", "USA"]
+    # ``px.bar(color=...)`` produces one trace per country. Flatten them.
+    by_country: dict[str, float] = {}
+    for trace in fig.data:
+        for x, y in zip(trace.x, trace.y):
+            by_country[str(x)] = float(y)
+    assert sorted(by_country) == ["CHN", "USA"]
     # 2023 values: USA=24.5, CHN=17.8.
-    by_country = dict(zip(xs, ys))
     assert by_country["USA"] == 24.5
     assert by_country["CHN"] == 17.8
 
