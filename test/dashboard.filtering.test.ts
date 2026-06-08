@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { average, DEFAULT_STATE, filterAndSortCountries, getCountries, type CountryStat } from '../src/core/dashboard.js';
+import { average, DEFAULT_STATE, filterAndSortCountries, getCountries, isCountryStat, type CountryStat } from '../src/core/dashboard.js';
 
 const data: CountryStat[] = [
   { country: 'Japan', region: 'East Asia', population: 124500000, gdpPerCapita: 33815, lifeExpectancy: 84.5, internetUsers: 94, co2PerCapita: 8.6 },
@@ -8,9 +8,12 @@ const data: CountryStat[] = [
 ];
 
 describe('dashboard core filtering and sorting', () => {
-  it('returns empty countries when dataset is not an array', () => {
+  it('returns only valid countries from unknown datasets', () => {
     expect(getCountries(null)).toEqual([]);
     expect(getCountries({})).toEqual([]);
+    expect(getCountries([data[0], null, { country: '', region: 'Nowhere', population: Number.NaN }])).toEqual([data[0]]);
+    expect(isCountryStat(data[0])).toBe(true);
+    expect(isCountryStat({ ...data[0], gdpPerCapita: '33815' })).toBe(false);
   });
 
   it('filters by region and search term, then sorts by selected metric descending', () => {

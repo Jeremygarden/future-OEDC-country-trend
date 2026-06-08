@@ -27,8 +27,23 @@ export const DEFAULT_STATE: DashboardState = {
   sortBy: 'population'
 };
 
+const numericFields: SortField[] = ['population', 'gdpPerCapita', 'lifeExpectancy', 'internetUsers', 'co2PerCapita'];
+
+export function isCountryStat(value: unknown): value is CountryStat {
+  if (!value || typeof value !== 'object') return false;
+
+  const candidate = value as Partial<CountryStat>;
+  return (
+    typeof candidate.country === 'string' &&
+    candidate.country.trim().length > 0 &&
+    typeof candidate.region === 'string' &&
+    candidate.region.trim().length > 0 &&
+    numericFields.every((field) => typeof candidate[field] === 'number' && Number.isFinite(candidate[field]))
+  );
+}
+
 export function getCountries(dataset: unknown): CountryStat[] {
-  return Array.isArray(dataset) ? (dataset as CountryStat[]) : [];
+  return Array.isArray(dataset) ? dataset.filter(isCountryStat) : [];
 }
 
 export function average(items: CountryStat[], key: SortField): number {
