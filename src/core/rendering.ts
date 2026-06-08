@@ -9,9 +9,21 @@ export interface RenderFormatters {
   number: (n: number) => string;
 }
 
+export function escapeHtml(value: string): string {
+  return value.replace(/[&<>"]/g, (character) => {
+    const entities: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;'
+    };
+    return entities[character];
+  });
+}
+
 export function renderSummary(stats: SummaryItem[]): string {
   return stats
-    .map(([value, label]) => `<article class="stat"><strong>${value}</strong><span>${label}</span></article>`)
+    .map(([value, label]) => `<article class="stat"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></article>`)
     .join('');
 }
 
@@ -26,7 +38,8 @@ export function renderChart(items: CountryStat[], formatCurrency: (n: number) =>
   return topItems
     .map((item) => {
       const width = Math.max(4, (item.gdpPerCapita / max) * 100);
-      return `<div class="bar-row">\n      <span class="bar-label" title="${item.country}">${item.country}</span>\n      <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>\n      <span class="bar-value">${formatCurrency(item.gdpPerCapita)}</span>\n    </div>`;
+      const country = escapeHtml(item.country);
+      return `<div class="bar-row">\n      <span class="bar-label" title="${country}">${country}</span>\n      <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>\n      <span class="bar-value">${escapeHtml(formatCurrency(item.gdpPerCapita))}</span>\n    </div>`;
     })
     .join('');
 }
@@ -34,7 +47,7 @@ export function renderChart(items: CountryStat[], formatCurrency: (n: number) =>
 export function renderRows(items: CountryStat[], formatters: RenderFormatters): string {
   return items
     .map(
-      (item) => `<tr>\n    <th scope="row">${item.country}</th>\n    <td>${item.region}</td>\n    <td class="numeric">${formatters.population(item.population)}</td>\n    <td class="numeric">${formatters.currency(item.gdpPerCapita)}</td>\n    <td class="numeric">${formatters.number(item.lifeExpectancy)}</td>\n    <td class="numeric">${formatters.number(item.internetUsers)}%</td>\n    <td class="numeric">${formatters.number(item.co2PerCapita)}</td>\n  </tr>`
+      (item) => `<tr>\n    <th scope="row">${escapeHtml(item.country)}</th>\n    <td>${escapeHtml(item.region)}</td>\n    <td class="numeric">${escapeHtml(formatters.population(item.population))}</td>\n    <td class="numeric">${escapeHtml(formatters.currency(item.gdpPerCapita))}</td>\n    <td class="numeric">${escapeHtml(formatters.number(item.lifeExpectancy))}</td>\n    <td class="numeric">${escapeHtml(formatters.number(item.internetUsers))}%</td>\n    <td class="numeric">${escapeHtml(formatters.number(item.co2PerCapita))}</td>\n  </tr>`
     )
     .join('');
 }

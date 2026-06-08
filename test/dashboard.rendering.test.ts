@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { type CountryStat } from '../src/core/dashboard.js';
-import { renderChart, renderRows, renderSummary, type SummaryItem } from '../src/core/rendering.js';
+import { escapeHtml, renderChart, renderRows, renderSummary, type SummaryItem } from '../src/core/rendering.js';
 
 const items: CountryStat[] = [
   { country: 'Canada', region: 'North America', population: 39290000, gdpPerCapita: 54966, lifeExpectancy: 82.6, internetUsers: 95, co2PerCapita: 14.2 },
@@ -26,6 +26,23 @@ describe('dashboard rendering helpers', () => {
 
     const empty = renderChart([], (n) => `${n}`);
     expect(empty).toContain('No countries match the current filters.');
+  });
+
+  it('escapes unsafe html characters', () => {
+    expect(escapeHtml('<script>alert("x")</script>')).toBe('&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;');
+
+    const html = renderRows(
+      [{ ...items[0], country: '<img src=x onerror=alert(1)>', region: 'A&B' }],
+      {
+        population: (n) => `${n}`,
+        currency: (n) => `$${n}`,
+        number: (n) => `${n}`
+      }
+    );
+
+    expect(html).toContain('&lt;img src=x onerror=alert(1)&gt;');
+    expect(html).toContain('A&amp;B');
+    expect(html).not.toContain('<img src=x');
   });
 
   it('renders table rows with formatted numeric values', () => {
