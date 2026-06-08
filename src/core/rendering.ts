@@ -10,12 +10,13 @@ export interface RenderFormatters {
 }
 
 export function escapeHtml(value: string): string {
-  return value.replace(/[&<>"]/g, (character) => {
+  return value.replace(/[&<>"']/g, (character) => {
     const entities: Record<string, string> = {
       '&': '&amp;',
       '<': '&lt;',
       '>': '&gt;',
-      '"': '&quot;'
+      '"': '&quot;',
+      "'": '&#39;'
     };
     return entities[character];
   });
@@ -38,8 +39,9 @@ export function renderChart(items: CountryStat[], formatCurrency: (n: number) =>
   return topItems
     .map((item) => {
       const width = Math.max(4, (item.gdpPerCapita / max) * 100);
+      const safeWidth = Number.isFinite(width) ? Math.min(100, Math.max(0, width)) : 4;
       const country = escapeHtml(item.country);
-      return `<div class="bar-row">\n      <span class="bar-label" title="${country}">${country}</span>\n      <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>\n      <span class="bar-value">${escapeHtml(formatCurrency(item.gdpPerCapita))}</span>\n    </div>`;
+      return `<div class="bar-row">\n      <span class="bar-label" title="${country}">${country}</span>\n      <span class="bar-track"><span class="bar-fill" style="width:${safeWidth}%"></span></span>\n      <span class="bar-value">${escapeHtml(formatCurrency(item.gdpPerCapita))}</span>\n    </div>`;
     })
     .join('');
 }

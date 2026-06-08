@@ -30,9 +30,10 @@ describe('dashboard rendering helpers', () => {
 
   it('escapes unsafe html characters', () => {
     expect(escapeHtml('<script>alert("x")</script>')).toBe('&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;');
+    expect(escapeHtml("O'Hare & <tag>")).toBe('O&#39;Hare &amp; &lt;tag&gt;');
 
     const html = renderRows(
-      [{ ...items[0], country: '<img src=x onerror=alert(1)>', region: 'A&B' }],
+      [{ ...items[0], country: '<img src=x onerror=alert(1)>', region: "A&B's" }],
       {
         population: (n) => `${n}`,
         currency: (n) => `$${n}`,
@@ -41,8 +42,9 @@ describe('dashboard rendering helpers', () => {
     );
 
     expect(html).toContain('&lt;img src=x onerror=alert(1)&gt;');
-    expect(html).toContain('A&amp;B');
+    expect(html).toContain('A&amp;B&#39;s');
     expect(html).not.toContain('<img src=x');
+    expect(html).not.toContain("A&B's");
   });
 
   it('renders table rows with formatted numeric values', () => {
