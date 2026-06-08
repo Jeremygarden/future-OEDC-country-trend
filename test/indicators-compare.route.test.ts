@@ -47,8 +47,11 @@ describe('indicators + compare API routes', () => {
 
     expect(response.statusCode).toBe(400);
     expect(response.json()).toMatchObject({
-      code: 'INVALID_COMPARE_QUERY',
-      message: 'Invalid compare query parameters'
+      error: {
+        code: 'INVALID_COMPARE_QUERY',
+        message: 'Invalid compare query parameters',
+        statusCode: 400
+      }
     });
 
     await app.close();

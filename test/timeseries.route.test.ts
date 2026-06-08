@@ -13,7 +13,7 @@ describe('timeseries API route (scaffold)', () => {
     expect([404, 200]).toContain(response.statusCode);
 
     if (response.statusCode === 404) {
-      expect(response.json().message).toContain('not found');
+      expect(response.json().error.message).toContain('not found');
     } else {
       const body = response.json();
       expect(body.total).toBeTypeOf('number');

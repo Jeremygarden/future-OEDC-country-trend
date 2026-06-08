@@ -13,8 +13,13 @@ describe('error handler and validation', () => {
     expect(response.statusCode).toBe(400);
 
     const body = response.json();
-    expect(body.statusCode).toBe(400);
-    expect(body.message).toContain('Invalid country query parameters');
+    expect(body).toMatchObject({
+      error: {
+        code: 'REQUEST_ERROR',
+        statusCode: 400
+      }
+    });
+    expect(body.error.message).toContain('Invalid country query parameters');
 
     await app.close();
   });
@@ -30,7 +35,9 @@ describe('error handler and validation', () => {
     expect(response.statusCode).toBe(404);
 
     const body = response.json();
+    // Fastify emits its own 404 payload for missing routes before custom errors.
     expect(body.statusCode).toBe(404);
+    expect(body.error).toBe('Not Found');
     expect(body.message).toContain('Route GET:/api/v1/does-not-exist not found');
 
     await app.close();

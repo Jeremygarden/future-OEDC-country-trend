@@ -46,7 +46,7 @@ describe('countries API routes', () => {
     });
 
     expect(response.statusCode).toBe(400);
-    expect(response.json().message).toContain('Invalid country query parameters');
+    expect(response.json().error.message).toContain('Invalid country query parameters');
 
     await app.close();
   });

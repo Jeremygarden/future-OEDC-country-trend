@@ -21,6 +21,7 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from models.base import SessionLocal
 from models.models import Country, DataSource, Indicator, DataPoint, EtlRun
+from etl.errors import EtlError
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 logger = logging.getLogger(__name__)
@@ -180,7 +181,11 @@ class WorldBankETL:
         """Execute the full World Bank ETL pipeline."""
         source_id = self._get_source_id()
         if not source_id:
-            raise ValueError("World Bank data source not found in DB. Run seed.py first.")
+            raise EtlError(
+                code="DATA_SOURCE_NOT_FOUND",
+                message="World Bank data source not found in DB. Run seed.py first.",
+                status_code=500,
+            )
         
         # Log ETL run start
         etl_run = EtlRun(source_id=source_id, status="running")

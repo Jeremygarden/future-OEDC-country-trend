@@ -1,5 +1,6 @@
 import fp from 'fastify-plugin';
 import type { FastifyPluginAsync } from 'fastify';
+import { buildApiErrorPayload } from '../core/api-error.js';
 
 const errorHandlerPluginRaw: FastifyPluginAsync = async (app) => {
   app.setErrorHandler((error, request, reply) => {
@@ -10,13 +11,14 @@ const errorHandlerPluginRaw: FastifyPluginAsync = async (app) => {
 
     request.log.error({ err: error, statusCode, code }, 'request failed');
 
-    reply.status(statusCode).send({
-      error: statusCode >= 500 ? 'Internal Server Error' : namedError.name,
-      code,
-      message: statusCode >= 500 ? 'Unexpected server error' : namedError.message,
-      statusCode,
-      details: statusCode >= 500 ? undefined : details
-    });
+    reply.status(statusCode).send(
+      buildApiErrorPayload(
+        statusCode,
+        code,
+        statusCode >= 500 ? 'Unexpected server error' : namedError.message,
+        statusCode >= 500 ? undefined : details
+      )
+    );
   });
 };
 
