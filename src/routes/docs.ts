@@ -51,6 +51,23 @@ const docsRoute: FastifyPluginAsync = async (app) => {
         },
         {
           method: 'GET',
+          path: '/api/v1/indicators',
+          description: 'List available indicators grouped by country',
+          query: {
+            country: 'optional ISO2/ISO3 country code'
+          }
+        },
+        {
+          method: 'GET',
+          path: '/api/v1/compare',
+          description: 'Compare one indicator across multiple countries',
+          query: {
+            countries: 'comma-separated ISO codes, e.g. US,CN,JP,AU,CA',
+            indicator: 'indicator name/code, e.g. GDP'
+          }
+        },
+        {
+          method: 'GET',
           path: '/api/v1/docs',
           description: 'Lightweight API documentation payload'
         }

@@ -48,6 +48,10 @@ function average(items, key) {
   return items.reduce((sum, item) => sum + item[key], 0) / items.length;
 }
 
+function clearElement(element) {
+  element.replaceChildren();
+}
+
 function renderSummary(items) {
   const population = items.reduce((sum, item) => sum + item.population, 0);
   const stats = [
@@ -56,32 +60,89 @@ function renderSummary(items) {
     [`${formatters.number.format(average(items, "lifeExpectancy"))} yrs`, "Average life expectancy"],
     [`${formatters.number.format(average(items, "internetUsers"))}%`, "Average internet access"]
   ];
-  els.summary.innerHTML = stats.map(([value, label]) => `<article class="stat"><strong>${value}</strong><span>${label}</span></article>`).join("");
+
+  clearElement(els.summary);
+  for (const [value, label] of stats) {
+    const article = document.createElement("article");
+    article.className = "stat";
+
+    const strong = document.createElement("strong");
+    strong.textContent = value;
+
+    const span = document.createElement("span");
+    span.textContent = label;
+
+    article.append(strong, span);
+    els.summary.append(article);
+  }
 }
 
 function renderChart(items) {
   const topItems = items.slice(0, 8);
   const max = Math.max(...topItems.map((item) => item.gdpPerCapita), 1);
-  els.chart.innerHTML = topItems.map((item) => {
+
+  clearElement(els.chart);
+
+  if (!topItems.length) {
+    const empty = document.createElement("p");
+    empty.textContent = "No countries match the current filters.";
+    els.chart.append(empty);
+    return;
+  }
+
+  for (const item of topItems) {
     const width = Math.max(4, (item.gdpPerCapita / max) * 100);
-    return `<div class="bar-row">
-      <span class="bar-label" title="${item.country}">${item.country}</span>
-      <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>
-      <span class="bar-value">${formatters.currency.format(item.gdpPerCapita)}</span>
-    </div>`;
-  }).join("") || "<p>No countries match the current filters.</p>";
+
+    const row = document.createElement("div");
+    row.className = "bar-row";
+
+    const label = document.createElement("span");
+    label.className = "bar-label";
+    label.title = item.country;
+    label.textContent = item.country;
+
+    const track = document.createElement("span");
+    track.className = "bar-track";
+
+    const fill = document.createElement("span");
+    fill.className = "bar-fill";
+    fill.style.width = `${width}%`;
+    track.append(fill);
+
+    const value = document.createElement("span");
+    value.className = "bar-value";
+    value.textContent = formatters.currency.format(item.gdpPerCapita);
+
+    row.append(label, track, value);
+    els.chart.append(row);
+  }
 }
 
 function renderRows(items) {
-  els.rows.innerHTML = items.map((item) => `<tr>
-    <th scope="row">${item.country}</th>
-    <td>${item.region}</td>
-    <td class="numeric">${formatters.population.format(item.population)}</td>
-    <td class="numeric">${formatters.currency.format(item.gdpPerCapita)}</td>
-    <td class="numeric">${formatters.number.format(item.lifeExpectancy)}</td>
-    <td class="numeric">${formatters.number.format(item.internetUsers)}%</td>
-    <td class="numeric">${formatters.number.format(item.co2PerCapita)}</td>
-  </tr>`).join("");
+  clearElement(els.rows);
+
+  for (const item of items) {
+    const row = document.createElement("tr");
+    const cells = [
+      ["th", item.country, ""],
+      ["td", item.region, ""],
+      ["td", formatters.population.format(item.population), "numeric"],
+      ["td", formatters.currency.format(item.gdpPerCapita), "numeric"],
+      ["td", formatters.number.format(item.lifeExpectancy), "numeric"],
+      ["td", `${formatters.number.format(item.internetUsers)}%`, "numeric"],
+      ["td", formatters.number.format(item.co2PerCapita), "numeric"]
+    ];
+
+    for (const [tag, text, className] of cells) {
+      const cell = document.createElement(tag);
+      if (tag === "th") cell.scope = "row";
+      if (className) cell.className = className;
+      cell.textContent = text;
+      row.append(cell);
+    }
+
+    els.rows.append(row);
+  }
 }
 
 function render() {

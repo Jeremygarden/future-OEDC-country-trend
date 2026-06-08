@@ -11,22 +11,31 @@ Run locally:
 
 Backend URL is configurable via the BACKEND_API_URL environment variable
 (default: http://localhost:3000/api/v1). When the backend is offline, the
-app falls back to fixtures/countries.sample.json.
+app falls back to fixtures/countries.sample.json plus deterministic
+synthetic time-series for indicators not surfaced by the simple list
+endpoint (clearly tagged as ``source=synthetic``).
 """
 from __future__ import annotations
 
 import streamlit as st
 
-# Iteration 1: Skeleton + country selector. More features land in
-# subsequent iterations.
+# Frontend modules — kept relative-import-free so `streamlit run frontend/app.py`
+# works without installing the package.
+import sys
+from pathlib import Path
 
-DEFAULT_COUNTRIES = [
-    {"iso3": "USA", "name": "United States", "flag": "🇺🇸"},
-    {"iso3": "CHN", "name": "China", "flag": "🇨🇳"},
-    {"iso3": "JPN", "name": "Japan", "flag": "🇯🇵"},
-    {"iso3": "AUS", "name": "Australia", "flag": "🇦🇺"},
-    {"iso3": "CAN", "name": "Canada", "flag": "🇨🇦"},
-]
+_HERE = Path(__file__).resolve().parent
+if str(_HERE) not in sys.path:
+    sys.path.insert(0, str(_HERE))
+
+from charts import bar_chart, line_chart  # noqa: E402
+from data_client import (  # noqa: E402
+    COUNTRY_META,
+    INDICATORS,
+    check_health,
+    get_country_table,
+    get_indicator_timeseries,
+)
 
 
 def configure_page() -> None:
@@ -45,42 +54,90 @@ def render_header() -> None:
     )
 
 
-def render_country_selector() -> list[str]:
-    """Render the sidebar country selector and return chosen ISO3 codes."""
+def render_sidebar() -> tuple[list[str], str]:
     with st.sidebar:
         st.header("⚙️ Controls")
-        labels = {c["iso3"]: f"{c['flag']} {c['name']}" for c in DEFAULT_COUNTRIES}
+        labels = {iso: f"{m['flag']} {m['name']}" for iso, m in COUNTRY_META.items()}
         chosen = st.multiselect(
             "Countries",
-            options=[c["iso3"] for c in DEFAULT_COUNTRIES],
-            default=[c["iso3"] for c in DEFAULT_COUNTRIES],
+            options=list(COUNTRY_META.keys()),
+            default=list(COUNTRY_META.keys()),
             format_func=lambda iso: labels[iso],
         )
+
         st.divider()
-        st.caption("Iteration 1 — skeleton")
-    return chosen
+        st.subheader("Backend")
+        health = check_health()
+        if health.online:
+            st.success(f"✅ {health.message}")
+        else:
+            st.warning(f"⚠️ {health.message}\n\nUsing fallback fixtures.")
+        st.caption(f"URL: `{health.backend_url}`")
+
+        st.divider()
+        st.caption("Iteration 2 — comparison line charts")
+
+    return chosen, health.message
+
+
+def render_country_overview(chosen: list[str]) -> None:
+    st.subheader("Selected countries")
+    cols = st.columns(len(chosen))
+    for col, iso3 in zip(cols, chosen):
+        meta = COUNTRY_META.get(iso3, {"name": iso3, "flag": "", "region": "—"})
+        with col:
+            st.metric(label=f"{meta['flag']} {meta['name']}", value=iso3, delta=meta["region"])
+
+
+def render_country_table() -> None:
+    df, source = get_country_table()
+    if df.empty:
+        st.info("No country list available from backend or fixture.")
+        return
+    st.markdown(f"**Country list** — source: `{source}`")
+    st.dataframe(df, hide_index=True, use_container_width=True)
+
+
+def render_comparison_charts(chosen: list[str]) -> None:
+    st.subheader("📈 Comparison line charts")
+    st.caption(
+        "Multi-country trends 2015–2024. Backend lacks a time-series endpoint; "
+        "values shown are deterministic synthetic series (`source=synthetic`)."
+    )
+
+    indicator_keys = ["gdp", "cpi", "unemployment"]
+    tabs = st.tabs([INDICATORS[k]["label"] for k in indicator_keys])
+    for tab, key in zip(tabs, indicator_keys):
+        with tab:
+            df = get_indicator_timeseries(chosen, key)
+            meta = INDICATORS[key]
+            line_col, bar_col = st.columns([2, 1])
+            with line_col:
+                st.plotly_chart(
+                    line_chart(df, meta["label"], meta["unit"]),
+                    use_container_width=True,
+                )
+            with bar_col:
+                st.plotly_chart(
+                    bar_chart(df, f"Latest {meta['label']}", meta["unit"]),
+                    use_container_width=True,
+                )
 
 
 def main() -> None:
     configure_page()
     render_header()
-    chosen = render_country_selector()
+    chosen, _ = render_sidebar()
 
     if not chosen:
         st.warning("Select at least one country in the sidebar to begin.")
         return
 
-    cols = st.columns(len(chosen))
-    label_by_iso = {c["iso3"]: c for c in DEFAULT_COUNTRIES}
-    for col, iso3 in zip(cols, chosen):
-        meta = label_by_iso[iso3]
-        with col:
-            st.metric(label=f"{meta['flag']} {meta['name']}", value=meta["iso3"])
-
-    st.info(
-        "Charts, KPIs, and per-dimension tabs land in iterations 2–6. "
-        "Backend integration is configurable via BACKEND_API_URL."
-    )
+    render_country_overview(chosen)
+    st.divider()
+    render_comparison_charts(chosen)
+    st.divider()
+    render_country_table()
 
 
 if __name__ == "__main__":

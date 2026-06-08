@@ -35,6 +35,8 @@ Health endpoint:
 - `GET /api/v1/countries/summary` - aggregate summary for current filter
 - `GET /api/v1/metrics` - request/uptime counters
 - `GET /api/v1/timeseries` - time series values from ETL JSON/CSV files
+- `GET /api/v1/indicators` - list available indicators grouped by country
+- `GET /api/v1/compare` - compare one indicator across multiple countries
 - `GET /api/v1/docs` - machine-readable endpoint catalog
 
 ### `/api/v1/countries` query params
@@ -61,6 +63,15 @@ Data source resolution order:
 5. `db/timeseries.csv`
 6. `scripts/timeseries.json`
 7. built-in fixture fallback
+
+### `/api/v1/indicators` query params
+
+- `country` optional ISO country code to filter one country
+
+### `/api/v1/compare` query params
+
+- `countries` comma-separated ISO codes (e.g. `US,CN,JP,AU,CA`)
+- `indicator` indicator name/code (e.g. `GDP`)
 
 ## Scripts
 
