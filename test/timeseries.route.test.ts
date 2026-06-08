@@ -2,25 +2,30 @@ import { describe, expect, it } from 'vitest';
 import { createApp } from '../src/app.js';
 
 describe('timeseries API route (scaffold)', () => {
-  it('returns 404 until /api/v1/timeseries is implemented', async () => {
+  it('returns 404 until /api/v1/timeseries is implemented, otherwise validates response shape', async () => {
     const app = createApp();
 
     const response = await app.inject({
       method: 'GET',
-      url: '/api/v1/timeseries?indicator=NY.GDP.MKTP.CD&countries=USA,CHN&startYear=2020&endYear=2023'
+      url: '/api/v1/timeseries?indicator=GDP&country=US&fromYear=2020&toYear=2023'
     });
 
-    // TODO(timeseries): switch this test to a strict 200+schema assertion
-    // once backend route is merged.
     expect([404, 200]).toContain(response.statusCode);
 
     if (response.statusCode === 404) {
       expect(response.json().message).toContain('not found');
     } else {
       const body = response.json();
-      expect(body).toHaveProperty('indicator');
-      expect(body).toHaveProperty('series');
-      expect(Array.isArray(body.series)).toBe(true);
+      expect(body.total).toBeTypeOf('number');
+      expect(body.query).toBeTypeOf('object');
+      expect(Array.isArray(body.items)).toBe(true);
+
+      if (body.items.length > 0) {
+        expect(body.items[0]).toHaveProperty('countryCode');
+        expect(body.items[0]).toHaveProperty('indicator');
+        expect(body.items[0]).toHaveProperty('year');
+        expect(body.items[0]).toHaveProperty('value');
+      }
     }
 
     await app.close();
