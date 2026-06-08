@@ -33,9 +33,12 @@ DIMENSION_TABS: list[tuple[str, str]] = [
 ]
 
 
-def render_dimension_page(chosen: list[str], indicator_key: str) -> None:
+def render_dimension_page(chosen: list[str], indicator_key: str, year_range: tuple[int, int] | None = None) -> None:
     meta = INDICATORS[indicator_key]
-    df = get_indicator_timeseries(chosen, indicator_key)
+    if year_range:
+        df = get_indicator_timeseries(chosen, indicator_key, year_start=year_range[0], year_end=year_range[1])
+    else:
+        df = get_indicator_timeseries(chosen, indicator_key)
 
     if df.empty:
         st.info(f"No data available for {meta['label']}.")
@@ -85,11 +88,11 @@ def render_dimension_page(chosen: list[str], indicator_key: str) -> None:
     st.dataframe(pivot, use_container_width=True)
 
 
-def render_dimension_tabs(chosen: list[str]) -> None:
+def render_dimension_tabs(chosen: list[str], year_range: tuple[int, int] | None = None) -> None:
     if not chosen:
         st.warning("Select at least one country in the sidebar.")
         return
     tabs = st.tabs([label for label, _ in DIMENSION_TABS])
     for tab, (_, key) in zip(tabs, DIMENSION_TABS):
         with tab:
-            render_dimension_page(chosen, key)
+            render_dimension_page(chosen, key, year_range=year_range)
