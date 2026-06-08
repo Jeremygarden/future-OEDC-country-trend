@@ -91,3 +91,44 @@ def bar_chart(df: pd.DataFrame, title: str, y_label: str) -> go.Figure:
     )
     fig.update_yaxes(showgrid=True, gridcolor="#e2e8f0")
     return fig
+
+
+def mini_line_chart(df: pd.DataFrame, title: str, y_label: str) -> go.Figure:
+    """Compact multi-country line chart for the Overview 2x2 grid.
+
+    Tighter margins, fixed height=200, legend hidden (titles tell the story).
+    Same color map and long-format input as ``line_chart``.
+    """
+    if df is None or df.empty:
+        fig = _empty_figure(title)
+        fig.update_layout(
+            height=200,
+            margin=dict(l=10, r=10, t=30, b=20),
+            showlegend=False,
+        )
+        return fig
+    fig = px.line(
+        df,
+        x="year",
+        y="value",
+        color="iso3",
+        color_discrete_map=COUNTRY_COLORS,
+        title=title,
+    )
+    fig.update_traces(line=dict(width=2.0))
+    mini_layout = {
+        **_COMMON_LAYOUT,
+        "margin": dict(l=10, r=10, t=30, b=20),
+        "title_font": dict(size=13, color="#0f172a"),
+    }
+    fig.update_layout(
+        height=200,
+        showlegend=False,
+        xaxis_title=None,
+        yaxis_title=y_label,
+        hovermode="x unified",
+        **mini_layout,
+    )
+    fig.update_xaxes(showgrid=False, dtick=2)
+    fig.update_yaxes(showgrid=True, gridcolor="#e2e8f0")
+    return fig
