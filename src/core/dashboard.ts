@@ -43,7 +43,9 @@ export function isCountryStat(value: unknown): value is CountryStat {
 }
 
 export function getCountries(dataset: unknown): CountryStat[] {
-  return Array.isArray(dataset) ? dataset.filter(isCountryStat) : [];
+  if (!Array.isArray(dataset)) return [];
+  if (dataset.every(isCountryStat)) return dataset as CountryStat[];
+  return dataset.filter(isCountryStat);
 }
 
 export function average(items: CountryStat[], key: SortField): number {
