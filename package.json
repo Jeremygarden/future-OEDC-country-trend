@@ -24,7 +24,7 @@
     "vitest": "^2.1.9"
   },
   "description": "Backend API for global country stats dashboard",
-  "main": "index.js",
+  "main": "dist/index.js",
   "directories": {
     "test": "test"
   },
