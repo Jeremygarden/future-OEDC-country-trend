@@ -13,16 +13,14 @@ Backend URL is configurable via the BACKEND_API_URL environment variable
 (default: http://localhost:3000/api/v1). When the backend is offline, the
 app falls back to fixtures/countries.sample.json plus deterministic
 synthetic time-series for indicators not surfaced by the simple list
-endpoint (clearly tagged as ``source=synthetic``).
+endpoint (clearly tagged ``source=synthetic``).
 """
 from __future__ import annotations
 
-import streamlit as st
-
-# Frontend modules — kept relative-import-free so `streamlit run frontend/app.py`
-# works without installing the package.
 import sys
 from pathlib import Path
+
+import streamlit as st
 
 _HERE = Path(__file__).resolve().parent
 if str(_HERE) not in sys.path:
@@ -35,6 +33,8 @@ from data_client import (  # noqa: E402
     check_health,
     get_country_table,
     get_indicator_timeseries,
+    latest_value_per_country,
+    rank_countries,
 )
 
 
@@ -75,7 +75,7 @@ def render_sidebar() -> tuple[list[str], str]:
         st.caption(f"URL: `{health.backend_url}`")
 
         st.divider()
-        st.caption("Iteration 2 — comparison line charts")
+        st.caption("Iteration 3 — KPI metric cards")
 
     return chosen, health.message
 
@@ -87,6 +87,38 @@ def render_country_overview(chosen: list[str]) -> None:
         meta = COUNTRY_META.get(iso3, {"name": iso3, "flag": "", "region": "—"})
         with col:
             st.metric(label=f"{meta['flag']} {meta['name']}", value=iso3, delta=meta["region"])
+
+
+def render_kpi_row(chosen: list[str], indicator_key: str) -> None:
+    """KPI metric cards: latest value, YoY delta, rank per country."""
+    meta = INDICATORS[indicator_key]
+    df = get_indicator_timeseries(chosen, indicator_key)
+    latest = latest_value_per_country(df)
+    ranked = rank_countries(latest, ascending=False)
+
+    if ranked.empty:
+        st.info("No data available for KPI cards.")
+        return
+
+    source_tag = df["source"].mode().iloc[0] if "source" in df.columns else "—"
+    st.markdown(
+        f"**KPI: {meta['label']}** &nbsp;•&nbsp; source: `{source_tag}` &nbsp;•&nbsp; "
+        f"unit: `{meta['unit']}`"
+    )
+
+    cols = st.columns(len(ranked))
+    for col, (_, row) in zip(cols, ranked.iterrows()):
+        iso3 = row["iso3"]
+        cmeta = COUNTRY_META.get(iso3, {"flag": "", "name": iso3})
+        yoy = row["yoy_pct"]
+        delta_str = f"{yoy:+.2f}% YoY" if yoy is not None else "—"
+        rank_str = f"#{int(row['rank'])} of {len(ranked)}"
+        with col:
+            st.metric(
+                label=f"{cmeta['flag']} {cmeta['name']}  ·  {rank_str}",
+                value=f"{row['value']:.2f} {meta['unit']}",
+                delta=delta_str,
+            )
 
 
 def render_country_table() -> None:
@@ -101,14 +133,15 @@ def render_country_table() -> None:
 def render_comparison_charts(chosen: list[str]) -> None:
     st.subheader("📈 Comparison line charts")
     st.caption(
-        "Multi-country trends 2015–2024. Backend lacks a time-series endpoint; "
-        "values shown are deterministic synthetic series (`source=synthetic`)."
+        "Multi-country trends 2015–2024. Backend `/compare` is used when "
+        "available; otherwise deterministic synthetic series (`source=synthetic`)."
     )
 
     indicator_keys = ["gdp", "cpi", "unemployment"]
     tabs = st.tabs([INDICATORS[k]["label"] for k in indicator_keys])
     for tab, key in zip(tabs, indicator_keys):
         with tab:
+            render_kpi_row(chosen, key)
             df = get_indicator_timeseries(chosen, key)
             meta = INDICATORS[key]
             line_col, bar_col = st.columns([2, 1])
