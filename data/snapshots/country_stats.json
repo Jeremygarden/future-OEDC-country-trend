@@ -1,0 +1,4997 @@
+{
+  "generated_at": "2026-06-08T14:20:32.693288+00:00",
+  "source": "World Bank WDI v2 (https://api.worldbank.org/v2)",
+  "countries": [
+    "USA",
+    "CHN",
+    "JPN",
+    "AUS",
+    "CAN"
+  ],
+  "indicators": {
+    "gdp": "NY.GDP.MKTP.CD",
+    "cpi": "FP.CPI.TOTL.ZG",
+    "unemployment": "SL.UEM.TOTL.ZS",
+    "debt": "GC.DOD.TOTL.GD.ZS",
+    "energy": "EG.USE.PCAP.KG.OE",
+    "tax": "GC.TAX.TOTL.GD.ZS",
+    "fdi": "BX.KLT.DINV.WD.GD.ZS",
+    "health": "SH.XPD.CHEX.GD.ZS",
+    "savings": "NY.GNS.ICTR.ZS"
+  },
+  "year_range": [
+    2010,
+    2024
+  ],
+  "row_count": 621,
+  "rows": [
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 2.9183370211222
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 3.30384784681081
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 1.76278299052228
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 2.44988248109259
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 2.48792932080492
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 1.50836803138463
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 1.27699365720306
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 1.94864309065653
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 1.91140002818579
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 1.610770929127
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 0.846900734607273
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 2.86391284709318
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 6.59409658717841
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2023,
+      "value": 5.59701792296707
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2024,
+      "value": 3.16656665428797
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 1.77687154092627
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 2.91213508872351
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 1.51567823124516
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 0.938291897815316
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 1.90663590717861
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 1.12524136094277
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 1.42875954701085
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 1.59688412852976
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 2.26822567248103
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 1.94926902411592
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 0.716999632307827
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 3.39519318527527
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 6.80280115341612
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 3.87900159788425
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 2.38158383281173
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 3.17532475269199
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 5.55389892257493
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 2.6195243264554
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 2.62105001748114
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 1.9216416278852
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 1.43702380935654
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 2.00000182191943
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 1.59313600071435
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 2.07479039965576
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 2.89923416358226
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 2.41942189457782
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 0.981015135544881
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 1.9735755573905
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 0.23483682889305
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2024,
+      "value": 0.218128938439177
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2010,
+      "value": -0.728243207517779
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2011,
+      "value": -0.27245561610124
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2012,
+      "value": -0.0440645104432602
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2013,
+      "value": 0.335037912184741
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2014,
+      "value": 2.75922671353253
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2015,
+      "value": 0.795279630579839
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2016,
+      "value": -0.127258844489754
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2017,
+      "value": 0.484199796126385
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2018,
+      "value": 0.989094598021848
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2019,
+      "value": 0.46877615938395
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2020,
+      "value": -0.024995834027731
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2021,
+      "value": -0.233352779398264
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2022,
+      "value": 2.49770278172255
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2023,
+      "value": 3.26813365933163
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2024,
+      "value": 2.73853681635241
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 1.6400434423899
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 3.156841568622
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 2.06933726526067
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 1.46483265562717
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 1.62222297740817
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 0.118627135552451
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 1.26158320570536
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 2.13011000365961
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 2.44258329692817
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 1.81221007526021
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 1.23358439630629
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 4.69785886363742
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 8.00279982052121
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 4.11633838374488
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 2.94952520485207
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 28.5706752868622
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 30.0025299553744
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 39.3096720165071
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 37.4031396926122
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 41.5409287207942
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 46.293292747612
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 54.463570652249
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 53.1037976577229
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 54.3001380799371
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 59.9837867004913
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 69.0656538994855
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 69.836773674895
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 57.8834285733848
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 53.1497329605545
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 54.1193858391726
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 55.7251649377054
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 53.200869076551
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 51.4827081297932
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 55.9915837788793
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 56.0236243991088
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 54.4625651849142
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 53.1515356456582
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 53.3623246913959
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 74.5544073791525
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 68.7795713723483
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 59.704132672031
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 61.1023208728582
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 64.8871578917218
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 85.1548294082739
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 89.7347177439651
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 93.8330014607143
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 95.7184835504169
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 95.9491132711014
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 96.6110565851958
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 98.6931939368279
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 97.8800564031882
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 99.2223695206525
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 100.979786328903
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 126.370405951231
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 120.367733355153
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 114.694842004206
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 116.918808847311
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 117.973234857902
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 5762.9435664152
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 5698.65597309349
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 5533.72233837943
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 5533.38146350965
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 5407.4382264583
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 5318.66679266228
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 5216.98867184459
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 5162.45894302308
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 5086.37378454852
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 5231.57466031316
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 5159.03638381788
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 5006.44306522882
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 4942.16372202842
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2023,
+      "value": 4927.64894813822
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2024,
+      "value": 4750.15843585384
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 7660.75452103288
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 7716.24822782698
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 7637.78487245197
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 7668.79466344868
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 7780.1475931021
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 7690.40816617685
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 7944.50789345873
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 8175.19037647623
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 8161.77967501099
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 8125.58121311618
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 7495.07932297849
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 7524.86361233157
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 7578.02093601237
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 7336.06703531427
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 7156.1150442459
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 1899.79996108685
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 2027.46525356855
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 2085.21872095825
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 2137.32572690907
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 2177.55011435267
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 2175.1544486832
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 2149.2047500244
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 2215.91139022057
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 2310.87757050979
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 2397.96868908473
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 2465.96954605987
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 2623.79959356116
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 2676.48200976111
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 2850.94152906511
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2010,
+      "value": 3900.21212768124
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2011,
+      "value": 3620.18019068219
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2012,
+      "value": 3536.70253450885
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2013,
+      "value": 3567.33780517627
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2014,
+      "value": 3445.81632921551
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2015,
+      "value": 3400.59271053608
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2016,
+      "value": 3370.8877963853
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2017,
+      "value": 3391.05041453219
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2018,
+      "value": 3343.05412833973
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2019,
+      "value": 3261.62024942915
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2020,
+      "value": 3046.85480668859
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2021,
+      "value": 3196.03970960845
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2022,
+      "value": 3129.65861717499
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2023,
+      "value": 3039.14126131753
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2024,
+      "value": 3005.89902824379
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 7162.55933024159
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 7009.64607964907
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 6820.46062064875
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 6888.38143742637
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 6915.64165280321
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 6789.64733291075
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 6663.4963294418
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 6590.83509745633
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 6738.27272433986
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 6700.93033990565
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 6141.53125755889
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 6445.83409243358
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 6511.68841394546
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 6363.50015820072
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 6359.43979855855
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 3.08482804330762
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 4.67434620832808
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 3.70774989384992
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 3.43950309398958
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 4.28599049307814
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 3.456117831131
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 3.54660341826144
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 3.62158795648508
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 4.23450805251819
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 2.77077560426989
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 1.34826011276187
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 2.01542405903096
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 4.05215286724898
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2023,
+      "value": 2.03614704389564
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2024,
+      "value": 3.03883928325354
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 1.83725638740881
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 2.13783310760835
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 2.70016900895675
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 3.62980398357006
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 3.55390337011002
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 3.85389453706152
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 2.23835012140903
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 1.53752071953934
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 2.46931207254863
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 2.80676687017653
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 1.75897085668576
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 2.97618288160973
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 2.31755804932899
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 2.01979850018061
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 2.81029565355294
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 3.93541996731512
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 3.65069190228423
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 2.78099138181613
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 2.98598708261986
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 2.51155883670463
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 2.14957284731563
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 1.52539470315394
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 1.32468971748482
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 1.66361992284408
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 1.28549226847992
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 1.68770756292082
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 1.8903454142588
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 1.03841365474349
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 0.280991103634816
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2024,
+      "value": 0.0989988051182737
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2010,
+      "value": 0.12920448958805
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2011,
+      "value": -0.0136482744839263
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2012,
+      "value": 0.00872020150189608
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2013,
+      "value": 0.204293384186424
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2014,
+      "value": 0.403354543401035
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2015,
+      "value": 0.118161987748241
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2016,
+      "value": 0.818481615264516
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2017,
+      "value": 0.381319638034272
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2018,
+      "value": 0.501685482403774
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2019,
+      "value": 0.780785313301259
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2020,
+      "value": 1.23830386396694
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2021,
+      "value": 0.695100892094565
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2022,
+      "value": 1.12971840820326
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2023,
+      "value": 0.474278368651713
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2024,
+      "value": 0.401239653950032
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 1.75453268550496
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 1.68911277121237
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 1.54020811932936
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 1.71066753395925
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 1.43502130688419
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 2.80914762910409
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 2.53749765919682
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 1.95521086285051
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 1.0457039920427
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 1.47787452846554
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 0.650821071352324
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 2.04998648308338
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 1.62816817042838
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 1.32618252590589
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 1.03321085618604
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 1152566632022.13
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 1402939868653.4
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 1552728401401.58
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 1583737461925.39
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 1474677007565.64
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 1356805839935.9
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 1211588128417.61
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 1330890554614.09
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 1433144978761.67
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 1398349602956.35
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 1333336461648.09
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 1560617493202.69
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 1695627535475.8
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2023,
+      "value": 1734451264655.6
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2024,
+      "value": 1757022451652.83
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 1617343367486.26
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 1793326630174.52
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 1828366481521.6
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 1846597421834.98
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 1805749878439.94
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 1556508816217.14
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 1527994741907.43
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 1649265644244.09
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 1725329192783.02
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 1743725183672.52
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 1655684730000.19
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 2022378748423.23
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 2190411080134.32
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 2173339670064.33
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 2243636826633.76
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 6192564874453.29
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 7671757207851.29
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 8673664713189.24
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 9743124247267.24
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 10674533168257.4
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 11280814787468.9
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 11456024084962.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 12537559062282.9
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 14147765772963.8
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 14560167101283.4
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 14996414166715.1
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 18201698719564.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 18316765021690.2
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 18270356654533.2
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2024,
+      "value": 18743803170827.2
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2010,
+      "value": 5759071769013.11
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2011,
+      "value": 6233147172341.35
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2012,
+      "value": 6272362996105.03
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2013,
+      "value": 5212328181166.18
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2014,
+      "value": 4896994405353.29
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2015,
+      "value": 4444930651964.18
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2016,
+      "value": 5003677627544.24
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2017,
+      "value": 4930837369151.42
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2018,
+      "value": 5040880939324.86
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2019,
+      "value": 5117993853016.51
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2020,
+      "value": 5054068005376.28
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2021,
+      "value": 5039148168861.22
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2022,
+      "value": 4262463317796.53
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2023,
+      "value": 4213167237905.83
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2024,
+      "value": 4027597523550.58
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 15048964444000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 15599728123000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 16253972230000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 16843190993000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 17550680174000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 18206020741000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 18695110842000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 19477336549000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 20533057312000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 21380976119000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 21060473613000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 23315080560000.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 25604848907611.0
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 27292170793214.4
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 28750956130731.2
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 8.4193306
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 8.53425312
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 8.67020702
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 8.7465601
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 9.82833862
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 10.13642025
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 10.08958244
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 10.10880566
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 10.08907509
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 10.25421429
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 10.70324135
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 10.51612186
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 9.89226055
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2023,
+      "value": 10.39852047
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 10.70066547
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 10.40518665
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 10.5407114
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 10.43559265
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 10.28115654
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 10.76397896
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 11.05626965
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 10.9242115
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 10.92262077
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 11.04823494
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 13.01732922
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 12.38106632
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 11.08119678
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 11.18692875
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 11.3095665
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 4.15821123
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 4.26719379
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 4.49046612
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 4.63882637
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 4.69880247
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 4.85367584
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 4.88338089
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 4.9695034
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 5.06933308
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 5.26516867
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 5.50441837
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 5.25590324
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 5.88078785
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 5.94388866
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2010,
+      "value": 9.0630064
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2011,
+      "value": 10.48780155
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2012,
+      "value": 10.67169094
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2013,
+      "value": 10.67438698
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2014,
+      "value": 10.7290144
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2015,
+      "value": 10.74969959
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2016,
+      "value": 10.65891552
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2017,
+      "value": 10.65627098
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2018,
+      "value": 10.73988247
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2019,
+      "value": 10.96998405
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2020,
+      "value": 11.44974613
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2021,
+      "value": 12.08108234
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2022,
+      "value": 12.32275677
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2023,
+      "value": 10.73979473
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 16.19722366
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 16.14000511
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 16.11975479
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 15.95227051
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 16.1415844
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 16.40155411
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 16.69203949
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 16.63827515
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 16.51312637
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 16.54486084
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 18.51597404
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 17.35207748
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 16.52875137
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 16.69414902
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 21.7091351421171
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 23.1621677041742
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 24.200411352821
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 23.7827985137743
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 23.4563274824008
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 22.521231196962
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 20.529640955705
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 21.5782074482669
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 21.4012664353392
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 21.9808894845608
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 23.2325990455773
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 25.1958520075371
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 24.9259369836481
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2023,
+      "value": 23.7753856393832
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2024,
+      "value": 22.9216103635704
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 19.312530097616
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 20.8571094113825
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 20.9179512281937
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 21.5972984025064
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 22.1484938947536
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 19.5693636315682
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 19.1464545719812
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 19.845280989292
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 19.5829312304021
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 20.2616339861192
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 19.4618890023723
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 23.3033851986679
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 24.3499059252168
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 21.9353294964713
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 21.4350659303842
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 50.7951259924622
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 48.6410622284448
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 48.1956233738576
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 47.0363460228068
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 47.2736238197056
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 45.1016053776732
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 43.8678663976574
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 44.3202552812278
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 43.7715764233009
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 43.2925997301417
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 43.4998633494291
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 44.679938707538
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 44.8335710565362
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 42.5717088559186
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2024,
+      "value": 42.8328411949589
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2010,
+      "value": 26.3773425046421
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2011,
+      "value": 25.5805714085266
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2012,
+      "value": 24.895748835138
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2013,
+      "value": 25.2525231315864
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2014,
+      "value": 25.7720886257814
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2015,
+      "value": 28.1789158205035
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2016,
+      "value": 28.7272416114128
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2017,
+      "value": 29.2896490905596
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2018,
+      "value": 29.1254854238882
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2019,
+      "value": 29.1717018986434
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2020,
+      "value": 28.1462434697604
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2021,
+      "value": 29.6493466370105
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2022,
+      "value": 28.7683676764073
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2023,
+      "value": 29.9793389407217
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2024,
+      "value": 31.068062509507
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 15.383257822255
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 16.3373295989846
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 18.3792918907922
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 18.6046397105057
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 19.721013463213
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 19.7947209402226
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 18.6676935456278
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 19.1103747200543
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 19.346553899104
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 19.5741671320652
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 18.6433841524645
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 18.0329336164215
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 18.6927640825769
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 17.6716283821554
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 17.8108789729135
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 20.411751894265
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 20.2598123616431
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 21.028478984604
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 21.8526958939392
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 21.8026703321947
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 21.7852484720567
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 22.1881700823279
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 22.0221874286349
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 23.1220344318251
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 23.3142643790741
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 22.507523858651
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 23.0039076566829
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 23.5614929509239
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 11.7328092981826
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 11.8039212812623
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 11.6644273631038
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 11.6235045990299
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 11.8083790792206
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 12.3898109063213
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 12.496562633144
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 12.6120166809848
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 13.0576846693075
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 12.7416889014909
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 13.5185987464231
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 13.996294680919
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 13.7601983907062
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 13.8847778145142
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 13.8761714989132
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 10.0382796577366
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 10.1512000219484
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 10.0894667610088
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 9.7321625039509
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 9.49826837509792
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 9.19468038601503
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 8.94556190414739
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 9.24872439343925
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 8.89089034445248
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 8.32942550168391
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 7.92409749807608
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 7.79829641266187
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 7.51799464421188
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 7.6382330077989
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2024,
+      "value": 7.01276862066958
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 8.56322576078511
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 9.5389309882013
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 9.763916029528
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 10.4835093346258
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 10.9354320229891
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 11.2374940636678
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 10.9182669054538
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 11.5834831642617
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 9.98924207356735
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 9.95830072560589
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 10.2956165176721
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 11.5908392126096
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 12.8325490685607
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 10.8198146727639
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 10.9743898103877
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2010,
+      "value": 5.214
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2011,
+      "value": 5.083
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2012,
+      "value": 5.225
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2013,
+      "value": 5.663
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2014,
+      "value": 6.078
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2015,
+      "value": 6.055
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2016,
+      "value": 5.711
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2017,
+      "value": 5.592
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2018,
+      "value": 5.345
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2019,
+      "value": 5.143
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2020,
+      "value": 6.394
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2021,
+      "value": 5.022
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2022,
+      "value": 3.728
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2023,
+      "value": 3.668
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2024,
+      "value": 3.942
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2010,
+      "value": 8.178
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2011,
+      "value": 7.637
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2012,
+      "value": 7.392
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2013,
+      "value": 7.143
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2014,
+      "value": 7.023
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2015,
+      "value": 6.945
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2016,
+      "value": 7.038
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2017,
+      "value": 6.426
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2018,
+      "value": 5.837
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2019,
+      "value": 5.69
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2020,
+      "value": 9.657
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2021,
+      "value": 7.527
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2022,
+      "value": 5.279
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2023,
+      "value": 5.415
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2024,
+      "value": 6.351
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2010,
+      "value": 4.53
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2011,
+      "value": 4.55
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2012,
+      "value": 4.58
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2013,
+      "value": 4.6
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2014,
+      "value": 4.63
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2015,
+      "value": 4.65
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2016,
+      "value": 4.56
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2017,
+      "value": 4.47
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2018,
+      "value": 4.31
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2019,
+      "value": 4.56
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2020,
+      "value": 5.0
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2021,
+      "value": 4.55
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2022,
+      "value": 4.98
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2023,
+      "value": 4.67
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2024,
+      "value": 4.59
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2010,
+      "value": 5.102
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2011,
+      "value": 4.55
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2012,
+      "value": 4.358
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2013,
+      "value": 4.038
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2014,
+      "value": 3.589
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2015,
+      "value": 3.385
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2016,
+      "value": 3.132
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2017,
+      "value": 2.822
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2018,
+      "value": 2.467
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2019,
+      "value": 2.351
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2020,
+      "value": 2.809
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2021,
+      "value": 2.808
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2022,
+      "value": 2.614
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2023,
+      "value": 2.6
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2024,
+      "value": 2.5
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2010,
+      "value": 9.633
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2011,
+      "value": 8.949
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2012,
+      "value": 8.069
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2013,
+      "value": 7.375
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2014,
+      "value": 6.168
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2015,
+      "value": 5.28
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2016,
+      "value": 4.869
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2017,
+      "value": 4.355
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2018,
+      "value": 3.896
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2019,
+      "value": 3.669
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2020,
+      "value": 8.055
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2021,
+      "value": 5.349
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2022,
+      "value": 3.65
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2023,
+      "value": 3.638
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2024,
+      "value": 4.022
+    }
+  ]
+}

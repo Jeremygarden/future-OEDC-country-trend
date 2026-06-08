@@ -84,6 +84,8 @@ def render_sidebar() -> tuple[list[str], tuple[int, int]]:
             health = check_health()
         if health.online:
             st.success(f"✅ {health.message}")
+        elif "snapshot" in health.message.lower() or "offline mode" in health.message.lower():
+            st.info(f"ℹ️ {health.message}")
         else:
             st.warning(f"⚠️ {health.message}\n\nUsing fallback fixtures.")
         st.caption(f"URL: `{health.backend_url}`")

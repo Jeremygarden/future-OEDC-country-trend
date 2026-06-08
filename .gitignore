@@ -5,6 +5,14 @@
 *.egg-info/
 *.log
 *.py[cod]
+# OpenClaw workspace metadata (when this repo lives inside an agent workspace)
+AGENTS.md
+SOUL.md
+IDENTITY.md
+USER.md
+TOOLS.md
+HEARTBEAT.md
+.openclaw/
 *.so
 *.sqlite3
 .DS_Store

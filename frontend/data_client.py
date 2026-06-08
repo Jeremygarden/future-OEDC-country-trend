@@ -30,6 +30,12 @@ DEFAULT_BACKEND_URL = "http://localhost:3000/api/v1"
 # fixtures/ is two levels above this file (frontend/data_client.py -> repo/)
 REPO_ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_PATH = REPO_ROOT / "fixtures" / "countries.sample.json"
+SNAPSHOT_PATH = REPO_ROOT / "data" / "snapshots" / "country_stats.json"
+
+# Cached snapshot payload (built by scripts/build_snapshot.py from World Bank
+# WDI v2). Read once and held in module scope for fast repeated access in
+# Streamlit's rerun model.
+_SNAPSHOT_CACHE: dict[str, Any] | None = None
 
 INDICATORS = {
     "gdp": {"label": "GDP (USD trillions)", "unit": "T$", "code": "NY.GDP.MKTP.CD"},
@@ -71,6 +77,14 @@ def check_health(timeout: float = 1.5) -> HealthStatus:
             return HealthStatus(True, "Backend online", url)
         return HealthStatus(False, f"Backend returned HTTP {resp.status_code}", url)
     except requests.RequestException as exc:
+        snap = load_snapshot()
+        if snap:
+            generated = snap.get("generated_at", "unknown")
+            return HealthStatus(
+                False,
+                f"Offline mode — World Bank snapshot ({snap.get('row_count', 0)} rows, generated {generated[:10]})",
+                url,
+            )
         return HealthStatus(False, f"Backend unreachable: {exc.__class__.__name__}", url)
 
 
@@ -122,12 +136,92 @@ def load_fixture_countries() -> list[dict[str, Any]]:
         return []
 
 
+def load_snapshot() -> dict[str, Any] | None:
+    """Return the offline World Bank snapshot, or None if unavailable.
+
+    Built by ``scripts/build_snapshot.py``; baked into the repo so the
+    Streamlit Cloud deployment has real numbers even without a backend.
+    """
+    global _SNAPSHOT_CACHE
+    if _SNAPSHOT_CACHE is not None:
+        return _SNAPSHOT_CACHE
+    if not SNAPSHOT_PATH.exists():
+        return None
+    try:
+        _SNAPSHOT_CACHE = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
+        return _SNAPSHOT_CACHE
+    except (OSError, ValueError):
+        return None
+
+
+def snapshot_rows_for(
+    iso_codes: list[str],
+    indicator_key: str,
+    year_start: int,
+    year_end: int,
+) -> list[dict[str, Any]]:
+    snap = load_snapshot()
+    if not snap:
+        return []
+    wanted = set(iso_codes)
+    out: list[dict[str, Any]] = []
+    for row in snap.get("rows", []):
+        if row.get("indicator") != indicator_key:
+            continue
+        iso3 = row.get("iso3")
+        if iso3 not in wanted:
+            continue
+        year = int(row.get("year", 0))
+        if not (year_start <= year <= year_end):
+            continue
+        value = float(row["value"])
+        # GDP is stored in raw USD; the UI labels it in trillions.
+        if indicator_key == "gdp":
+            value = value / 1e12
+        out.append(
+            {
+                "year": year,
+                "iso3": iso3,
+                "country": COUNTRY_META.get(iso3, {}).get("name", row.get("country", iso3)),
+                "value": round(value, 4),
+                "indicator": indicator_key,
+                "source": "snapshot",
+            }
+        )
+    out.sort(key=lambda r: (r["iso3"], r["year"]))
+    return out
+
+
 def get_country_table(prefer_backend: bool = True) -> tuple[pd.DataFrame, str]:
     """Return a DataFrame of countries plus the data source tag."""
     if prefer_backend:
         rows = fetch_countries()
         if rows:
             return pd.DataFrame(rows), "backend"
+
+    # Synthesize a small country table from the snapshot's latest GDP rows so
+    # the dashboard's overview cards have real numbers even in offline mode.
+    snap_rows = snapshot_rows_for(list(COUNTRY_META.keys()), "gdp", 2010, 2024)
+    if snap_rows:
+        by_iso: dict[str, dict[str, Any]] = {}
+        for r in snap_rows:
+            cur = by_iso.get(r["iso3"])
+            if cur is None or r["year"] > cur["year"]:
+                by_iso[r["iso3"]] = r
+        rows = []
+        for iso3, r in by_iso.items():
+            rows.append(
+                {
+                    "iso3": iso3,
+                    "country": r["country"],
+                    "region": COUNTRY_META[iso3]["region"],
+                    "gdpTrillions": r["value"],
+                    "latestYear": r["year"],
+                    "source": "snapshot",
+                }
+            )
+        return pd.DataFrame(rows), "snapshot"
+
     fixture_rows = load_fixture_countries()
     return pd.DataFrame(fixture_rows), "fixture"
 
@@ -166,7 +260,10 @@ def get_indicator_timeseries(
     """Long-format DataFrame: year, iso3, country, value, indicator, source."""
     years = list(range(year_start, year_end + 1))
 
-    # Try real backend /compare first.
+    # Priority order:
+    #  1. Live backend /compare (when running locally with docker compose)
+    #  2. Bundled World Bank snapshot (for Streamlit Cloud / offline mode)
+    #  3. Deterministic synthetic series (last-resort UI safety net)
     code = INDICATORS.get(indicator_key, {}).get("code")
     if code:
         backend_rows = fetch_compare(iso_codes, code)
@@ -193,6 +290,11 @@ def get_indicator_timeseries(
                         )
             if records:
                 return pd.DataFrame(records)
+
+    # Snapshot (real data from World Bank, baked at deploy time).
+    snap_rows = snapshot_rows_for(iso_codes, indicator_key, year_start, year_end)
+    if snap_rows:
+        return pd.DataFrame(snap_rows)
 
     # Fallback: deterministic synthetic.
     records = []

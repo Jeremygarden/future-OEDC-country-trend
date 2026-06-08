@@ -38,18 +38,42 @@ def test_synth_series_differs_per_country() -> None:
     assert usa != chn  # different seeds → different drift
 
 
-def test_get_indicator_timeseries_synthetic_when_backend_offline(
+def test_get_indicator_timeseries_prefers_snapshot_when_backend_offline(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    # Force every backend call to fail.
+    """With backend down but a bundled snapshot available, return real data."""
     def always_fail(*args: Any, **kwargs: Any) -> Any:
         raise data_client.requests.ConnectionError("offline")
 
     monkeypatch.setattr(data_client.requests, "get", always_fail)
 
+    snap = data_client.load_snapshot()
+    if not snap:
+        pytest.skip("snapshot not built; run scripts/build_snapshot.py")
+
     df = get_indicator_timeseries(["USA", "CHN"], "gdp", 2018, 2022)
     assert not df.empty
     assert set(df.columns) >= {"year", "iso3", "country", "value", "indicator", "source"}
+    assert set(df["iso3"].unique()) == {"USA", "CHN"}
+    assert set(df["year"].unique()) == {2018, 2019, 2020, 2021, 2022}
+    assert (df["source"] == "snapshot").all()
+
+
+def test_get_indicator_timeseries_synthetic_when_no_snapshot(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """With both backend and snapshot unavailable, fall back to synthetic."""
+    def always_fail(*args: Any, **kwargs: Any) -> Any:
+        raise data_client.requests.ConnectionError("offline")
+
+    monkeypatch.setattr(data_client.requests, "get", always_fail)
+    # Disable snapshot for this test only.
+    monkeypatch.setattr(data_client, "_SNAPSHOT_CACHE", None)
+    monkeypatch.setattr(data_client, "load_snapshot", lambda: None)
+    monkeypatch.setattr(data_client, "snapshot_rows_for", lambda *a, **k: [])
+
+    df = get_indicator_timeseries(["USA", "CHN"], "gdp", 2018, 2022)
+    assert not df.empty
     assert set(df["iso3"].unique()) == {"USA", "CHN"}
     assert set(df["year"].unique()) == {2018, 2019, 2020, 2021, 2022}
     assert (df["source"] == "synthetic").all()
