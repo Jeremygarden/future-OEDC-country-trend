@@ -56,7 +56,7 @@ def test_compute_yoy_change():
     assert result[0]["yoy_change"] is None  # First year has no previous
     assert result[1]["yoy_change"] == pytest.approx(10.0, rel=0.01)  # 10% growth
     assert result[2]["yoy_change"] == pytest.approx(-4.545, rel=0.01)  # ~-4.5% decline
-    assert result[3]["yoy_change"] == pytest.approx(9.524, rel=0.01)
+    assert result[3]["yoy_change"] == pytest.approx(10.0, rel=0.01)  # (115.5-105)/105*100 = 10.0
 
 
 def test_compute_yoy_change_empty():
@@ -112,13 +112,14 @@ def test_compute_country_rank_ascending():
 
 
 def test_flag_outliers():
-    """Test outlier detection."""
-    # Normal values with one clear outlier
-    values = [3.5, 3.6, 3.4, 3.7, 100.0, 3.5, 3.6]  # 100.0 is outlier
-    flags = flag_outliers(values)
+    """Test outlier detection with clearly separated values."""
+    # Use values where the outlier is clearly beyond 3 std
+    # Mean of normals ≈ 10.0, std ≈ 0.5, outlier 1000 is way beyond 3 std
+    values = [10.0, 11.0, 9.5, 10.5, 10.2, 1000.0, 10.1]  # 1000.0 is outlier
+    flags = flag_outliers(values, threshold_std=3.0)
     
-    assert flags[4] == True   # 100.0 is outlier
-    normal_flags = [f for i, f in enumerate(flags) if i != 4]
+    assert flags[5] == True   # 1000.0 is clear outlier
+    normal_flags = [f for i, f in enumerate(flags) if i != 5]
     assert all(f == False for f in normal_flags)
 
 

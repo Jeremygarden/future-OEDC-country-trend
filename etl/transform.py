@@ -131,25 +131,49 @@ def compute_country_rank(values_by_country: dict[str, float], ascending: bool = 
 
 def flag_outliers(values: list[float], threshold_std: float = 3.0) -> list[bool]:
     """
-    Flag values that are more than threshold_std standard deviations from mean.
+    Flag values that are outliers using the IQR (interquartile range) method.
+    More robust than mean+std because it's not affected by the outliers themselves.
+    
+    Values > Q3 + 1.5*IQR or < Q1 - 1.5*IQR are flagged as outliers.
+    The threshold_std parameter scales the IQR multiplier (default 1.5).
+    
     Returns a boolean list: True = outlier.
     """
     if len(values) < 3:
         return [False] * len(values)
     
-    valid = [v for v in values if v is not None]
+    valid = sorted([v for v in values if v is not None])
     if not valid:
         return [False] * len(values)
     
-    mean = sum(valid) / len(valid)
-    variance = sum((v - mean) ** 2 for v in valid) / len(valid)
-    std = variance ** 0.5
+    n = len(valid)
     
-    if std == 0:
-        return [False] * len(values)
+    # Compute quartiles
+    q1_idx = n // 4
+    q3_idx = 3 * n // 4
+    q1 = valid[q1_idx]
+    q3 = valid[min(q3_idx, n - 1)]
+    iqr = q3 - q1
+    
+    if iqr == 0:
+        # Fallback to mean+std if IQR is 0 (all same values)
+        mean = sum(valid) / len(valid)
+        variance = sum((v - mean) ** 2 for v in valid) / len(valid)
+        std = variance ** 0.5
+        if std == 0:
+            return [False] * len(values)
+        return [
+            abs(v - mean) > threshold_std * std if v is not None else False
+            for v in values
+        ]
+    
+    # IQR multiplier: threshold_std=3 → multiplier=1.5, threshold_std=2 → multiplier=1.0
+    multiplier = 1.5 * (threshold_std / 3.0)
+    lower = q1 - multiplier * iqr
+    upper = q3 + multiplier * iqr
     
     return [
-        abs(v - mean) > threshold_std * std if v is not None else False
+        v < lower or v > upper if v is not None else False
         for v in values
     ]
 

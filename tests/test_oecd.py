@@ -104,15 +104,15 @@ def test_oecd_client_fetch_with_mock():
 
 def test_oecd_etl_upsert():
     """Test OECD ETL upsert logic."""
-    import os
-    os.environ["DATABASE_URL"] = "sqlite:///:memory:"
-    
-    from models.base import engine, Base
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    from models.base import Base
     from models.models import Country, DataSource, Indicator, DataPoint
-    Base.metadata.create_all(bind=engine)
     
-    from models.base import SessionLocal
-    db = SessionLocal()
+    test_engine = create_engine("sqlite:///:memory:", echo=False)
+    Base.metadata.create_all(bind=test_engine)
+    TestSession = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
+    db = TestSession()
     
     country = Country(iso2="US", iso3="USA", name="United States")
     source = DataSource(name="OECD", url="http://test", api_type="oecd")
