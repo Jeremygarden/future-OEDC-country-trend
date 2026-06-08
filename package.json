@@ -10,7 +10,10 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "ci": "bash scripts/ci.sh",
+    "ci:ts": "bash scripts/ci.sh --ts",
+    "ci:py": "bash scripts/ci.sh --py"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

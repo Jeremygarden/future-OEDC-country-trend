@@ -1,0 +1,76 @@
+# GitHub Actions CI workflow (template)
+#
+# This file is intentionally NOT under .github/workflows/ because the bot
+# that introduced CI parity (scripts/ci.sh) did not have a Personal Access
+# Token with the `workflow` scope, and GitHub server-side rejects any push
+# that creates or updates files under .github/workflows/ without it.
+#
+# A maintainer with `workflow` scope can adopt CI by:
+#     mkdir -p .github/workflows
+#     cp docs/ci-workflow.yml.example .github/workflows/ci.yml
+#     git add .github/workflows/ci.yml
+#     git commit -m "ci: enable GitHub Actions workflow"
+#     git push
+#
+# Tracking issue: https://github.com/Jeremygarden/future-OEDC-country-trend/issues/11
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  typescript:
+    name: TypeScript lint, build, tests, and frontend syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Lint TypeScript
+        run: npm run lint
+
+      - name: Build TypeScript
+        run: npm run build
+
+      - name: Run Vitest
+        run: npm test
+
+      - name: Frontend JavaScript syntax check
+        run: node --check app.js
+
+  python:
+    name: Python pytest and frontend syntax
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r frontend/requirements.txt
+
+      - name: Python frontend syntax check
+        run: python -m py_compile frontend/app.py frontend/charts.py frontend/data_client.py
+
+      - name: Run pytest
+        run: pytest tests

@@ -118,6 +118,39 @@ pytest tests/ -v
 
 ---
 
+## Continuous Integration
+
+The repo ships a unified, locally-runnable CI script that exercises the same
+checks a GitHub Actions workflow would run, covering both the TypeScript
+backend and the Python ETL / Streamlit frontend.
+
+```bash
+# Run everything (TS + Python)
+bash scripts/ci.sh
+# or
+npm run ci
+
+# Stack-scoped runs
+npm run ci:ts    # eslint + tsc + vitest + `node --check app.js`
+npm run ci:py    # pytest tests/ + frontend syntax check
+```
+
+A GitHub Actions workflow template equivalent to `scripts/ci.sh` lives at
+[`docs/ci-workflow.yml.example`](docs/ci-workflow.yml.example). A maintainer
+with a Personal Access Token that has the `workflow` scope can adopt it via:
+
+```bash
+mkdir -p .github/workflows
+cp docs/ci-workflow.yml.example .github/workflows/ci.yml
+git add .github/workflows/ci.yml
+git commit -m "ci: enable GitHub Actions workflow"
+git push
+```
+
+Tracking issue: [#11](https://github.com/Jeremygarden/future-OEDC-country-trend/issues/11).
+
+---
+
 ## Frontend (Streamlit) — see `frontend/README.md`
 
 A multi-country comparison dashboard inspired by stockpeers-style
