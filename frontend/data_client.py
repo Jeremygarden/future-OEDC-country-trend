@@ -1,9 +1,11 @@
 """Backend HTTP client + fallback fixture loader for the dashboard.
 
 Adds a thin requests-based client around the Fastify backend:
+  GET {BACKEND_API_URL}/health
   GET {BACKEND_API_URL}/countries
   GET {BACKEND_API_URL}/countries/summary
-  GET {BACKEND_API_URL}/health
+  GET {BACKEND_API_URL}/indicators?country=ISO3      (optional, since iter-2)
+  GET {BACKEND_API_URL}/compare?countries=...&indicator=...   (optional)
 
 When the backend is unreachable, callers fall back to the bundled fixture
 (``fixtures/countries.sample.json``) plus deterministic synthetic time-series
@@ -88,6 +90,29 @@ def fetch_countries(timeout: float = 3.0) -> list[dict[str, Any]] | None:
         return None
 
 
+def fetch_compare(
+    iso_codes: list[str], indicator_code: str, timeout: float = 3.0
+) -> list[dict[str, Any]] | None:
+    """Try the optional `/compare` endpoint; return None if unavailable."""
+    url = get_backend_url()
+    if not iso_codes or not indicator_code:
+        return None
+    try:
+        resp = requests.get(
+            f"{url}/compare",
+            params={"countries": ",".join(iso_codes), "indicator": indicator_code},
+            timeout=timeout,
+        )
+        if not resp.ok:
+            return None
+        payload = resp.json()
+        if isinstance(payload, dict) and isinstance(payload.get("items"), list):
+            return list(payload["items"])
+        return None
+    except (requests.RequestException, ValueError):
+        return None
+
+
 def load_fixture_countries() -> list[dict[str, Any]]:
     if not FIXTURE_PATH.exists():
         return []
@@ -108,12 +133,7 @@ def get_country_table(prefer_backend: bool = True) -> tuple[pd.DataFrame, str]:
 
 
 def _synth_series(iso3: str, indicator_key: str, years: Iterable[int]) -> list[float]:
-    """Deterministic synthetic time series for a (country, indicator) pair.
-
-    Uses a hash-seeded local Random instance so the chart looks the same on
-    every render but differs across countries/indicators. Values are kept in
-    realistic ballparks per indicator.
-    """
+    """Deterministic synthetic time series for a (country, indicator) pair."""
     seed = abs(hash((iso3, indicator_key))) % (2**31)
     rng = random.Random(seed)
     base_by_indicator = {
@@ -143,13 +163,39 @@ def get_indicator_timeseries(
     year_start: int = 2015,
     year_end: int = 2024,
 ) -> pd.DataFrame:
-    """Return a long-format DataFrame with columns: year, iso3, country, value, indicator.
-
-    Backend doesn't expose time-series via the simple /countries endpoint, so
-    we synthesize a plausible series and tag the source as ``synthetic``.
-    """
+    """Long-format DataFrame: year, iso3, country, value, indicator, source."""
     years = list(range(year_start, year_end + 1))
-    records: list[dict[str, Any]] = []
+
+    # Try real backend /compare first.
+    code = INDICATORS.get(indicator_key, {}).get("code")
+    if code:
+        backend_rows = fetch_compare(iso_codes, code)
+        if backend_rows:
+            records: list[dict[str, Any]] = []
+            for entry in backend_rows:
+                iso3 = (entry.get("countryCode") or "").upper()
+                cname = entry.get("countryName") or COUNTRY_META.get(iso3, {}).get("name", iso3)
+                for pt in entry.get("points") or []:
+                    year = pt.get("year")
+                    val = pt.get("value")
+                    if year is None or val is None:
+                        continue
+                    if year_start <= int(year) <= year_end:
+                        records.append(
+                            {
+                                "year": int(year),
+                                "iso3": iso3,
+                                "country": cname,
+                                "value": float(val),
+                                "indicator": indicator_key,
+                                "source": "backend",
+                            }
+                        )
+            if records:
+                return pd.DataFrame(records)
+
+    # Fallback: deterministic synthetic.
+    records = []
     for iso3 in iso_codes:
         meta = COUNTRY_META.get(iso3, {"name": iso3, "flag": ""})
         values = _synth_series(iso3, indicator_key, years)
@@ -161,6 +207,59 @@ def get_indicator_timeseries(
                     "country": meta["name"],
                     "value": value,
                     "indicator": indicator_key,
+                    "source": "synthetic",
                 }
             )
     return pd.DataFrame(records)
+
+
+# ---------------------------------------------------------------------------
+# KPI helpers (iteration 3)
+# ---------------------------------------------------------------------------
+
+def latest_value_per_country(df: pd.DataFrame) -> pd.DataFrame:
+    """Return the most-recent (year, value) per country, with YoY change.
+
+    Input: long-format DataFrame from ``get_indicator_timeseries``.
+    Output columns: iso3, country, year, value, prev_value, yoy_pct.
+    """
+    if df is None or df.empty:
+        return pd.DataFrame(columns=["iso3", "country", "year", "value", "prev_value", "yoy_pct"])
+
+    sorted_df = df.sort_values(["iso3", "year"])
+    rows: list[dict[str, Any]] = []
+    for iso3, group in sorted_df.groupby("iso3", sort=False):
+        if group.empty:
+            continue
+        latest = group.iloc[-1]
+        prev = group.iloc[-2] if len(group) >= 2 else None
+        prev_value = float(prev["value"]) if prev is not None else None
+        latest_value = float(latest["value"])
+        yoy = None
+        if prev_value not in (None, 0):
+            yoy = round(((latest_value - prev_value) / abs(prev_value)) * 100.0, 2)
+        rows.append(
+            {
+                "iso3": iso3,
+                "country": str(latest["country"]),
+                "year": int(latest["year"]),
+                "value": latest_value,
+                "prev_value": prev_value,
+                "yoy_pct": yoy,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def rank_countries(df_latest: pd.DataFrame, ascending: bool = False) -> pd.DataFrame:
+    """Add a 1-based ``rank`` column based on ``value``.
+
+    Default is descending (rank 1 = highest value).
+    """
+    if df_latest is None or df_latest.empty:
+        return df_latest
+    out = df_latest.copy()
+    out["rank"] = (
+        out["value"].rank(ascending=ascending, method="min").astype("Int64")
+    )
+    return out.sort_values("rank")
