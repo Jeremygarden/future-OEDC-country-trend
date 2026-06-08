@@ -7,7 +7,7 @@ import {
   type DashboardState,
   type SortField
 } from '../core/dashboard.js';
-import { COUNTRY_STATS } from '../data/country-stats.js';
+import { countryRepository } from '../services/country-repository.js';
 
 const sortFieldSchema = z.enum([
   'population',
@@ -57,7 +57,8 @@ const countriesRoute: FastifyPluginAsync = async (app) => {
     const query = parseQuery(request.query);
     const state = toState(query);
 
-    const filtered = filterAndSortCountries(COUNTRY_STATS, state);
+    const countries = await countryRepository.list();
+    const filtered = filterAndSortCountries(countries, state);
     const limit = query.limit ?? filtered.length;
     const offset = query.offset ?? 0;
     const items = filtered.slice(offset, offset + limit);
@@ -74,7 +75,8 @@ const countriesRoute: FastifyPluginAsync = async (app) => {
     const query = parseQuery(request.query);
     const state = toState(query);
 
-    const filtered = filterAndSortCountries(COUNTRY_STATS, state);
+    const countries = await countryRepository.list();
+    const filtered = filterAndSortCountries(countries, state);
     const totalPopulation = filtered.reduce((sum, country) => sum + country.population, 0);
 
     return {

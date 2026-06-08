@@ -1,0 +1,20 @@
+[
+  {
+    "country": "Testland",
+    "region": "Test Region",
+    "population": 1000,
+    "gdpPerCapita": 5000,
+    "lifeExpectancy": 70,
+    "internetUsers": 60,
+    "co2PerCapita": 1.2
+  },
+  {
+    "country": "Mockovia",
+    "region": "Test Region",
+    "population": 2000,
+    "gdpPerCapita": 7000,
+    "lifeExpectancy": 75,
+    "internetUsers": 80,
+    "co2PerCapita": 2.1
+  }
+]
