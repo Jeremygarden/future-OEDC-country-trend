@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Global Country Stats Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">Global development snapshot</p>
+      <h1>Global Country Stats Dashboard</h1>
+      <p class="lede">Compare population, GDP per capita, life expectancy, internet access, and emissions across countries.</p>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="Dashboard controls">
+        <label>
+          Search countries
+          <input id="search" type="search" placeholder="e.g. Japan" autocomplete="off" />
+        </label>
+        <label>
+          Region
+          <select id="regionFilter">
+            <option value="all">All regions</option>
+          </select>
+        </label>
+        <label>
+          Sort by
+          <select id="sortBy">
+            <option value="population">Population</option>
+            <option value="gdpPerCapita">GDP per capita</option>
+            <option value="lifeExpectancy">Life expectancy</option>
+            <option value="internetUsers">Internet access</option>
+            <option value="co2PerCapita">CO₂ per capita</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="summary-grid" id="summary" aria-live="polite"></section>
+
+      <section class="chart-card">
+        <div class="section-heading">
+          <h2>GDP per capita by country</h2>
+          <span id="resultCount"></span>
+        </div>
+        <div id="chart" class="bar-chart" role="img" aria-label="Bar chart comparing GDP per capita"></div>
+      </section>
+
+      <section class="table-card">
+        <div class="section-heading">
+          <h2>Country metrics</h2>
+          <button id="reset" type="button">Reset filters</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Country</th>
+                <th scope="col">Region</th>
+                <th scope="col">Population</th>
+                <th scope="col">GDP/capita</th>
+                <th scope="col">Life exp.</th>
+                <th scope="col">Internet</th>
+                <th scope="col">CO₂/capita</th>
+              </tr>
+            </thead>
+            <tbody id="countryRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Sample data for dashboard development. Replace with live World Bank/UN feeds when production data is available.</p>
+    </footer>
+
+    <script src="data/countries.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

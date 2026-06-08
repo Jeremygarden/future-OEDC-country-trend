@@ -115,3 +115,7 @@ print(json.dumps(data, indent=2, default=str))
 ```bash
 pytest tests/ -v
 ```
+
+---
+
+## Backend (TypeScript Fastify) — see README.backend.md
