@@ -28,6 +28,22 @@ Health endpoint:
 
 - `GET http://localhost:3000/api/v1/health`
 
+## API Endpoints
+
+- `GET /api/v1/health` - health check
+- `GET /api/v1/countries` - country list with filtering/sorting/pagination
+- `GET /api/v1/countries/summary` - aggregate summary for current filter
+- `GET /api/v1/metrics` - request/uptime counters
+- `GET /api/v1/docs` - machine-readable endpoint catalog
+
+### `/api/v1/countries` query params
+
+- `search` string filter by country name
+- `region` exact region name (or omit for all)
+- `sortBy` one of `population|gdpPerCapita|lifeExpectancy|internetUsers|co2PerCapita`
+- `limit` positive integer
+- `offset` integer >= 0
+
 ## Scripts
 
 - `npm run dev` - run with watch mode
