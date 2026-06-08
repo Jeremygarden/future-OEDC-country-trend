@@ -1,0 +1,19 @@
+[
+  {"countryCode":"US","countryName":"United States","indicator":"GDP","year":2020,"value":20.89,"source":"seed"},
+  {"countryCode":"US","countryName":"United States","indicator":"GDP","year":2021,"value":23.32,"source":"seed"},
+  {"countryCode":"US","countryName":"United States","indicator":"GDP","year":2022,"value":25.44,"source":"seed"},
+  {"countryCode":"CN","countryName":"China","indicator":"GDP","year":2020,"value":14.69,"source":"seed"},
+  {"countryCode":"CN","countryName":"China","indicator":"GDP","year":2021,"value":17.82,"source":"seed"},
+  {"countryCode":"CN","countryName":"China","indicator":"GDP","year":2022,"value":17.96,"source":"seed"},
+  {"countryCode":"JP","countryName":"Japan","indicator":"GDP","year":2020,"value":5.06,"source":"seed"},
+  {"countryCode":"JP","countryName":"Japan","indicator":"GDP","year":2021,"value":4.94,"source":"seed"},
+  {"countryCode":"JP","countryName":"Japan","indicator":"GDP","year":2022,"value":4.23,"source":"seed"},
+  {"countryCode":"AU","countryName":"Australia","indicator":"GDP","year":2020,"value":1.33,"source":"seed"},
+  {"countryCode":"AU","countryName":"Australia","indicator":"GDP","year":2021,"value":1.55,"source":"seed"},
+  {"countryCode":"AU","countryName":"Australia","indicator":"GDP","year":2022,"value":1.68,"source":"seed"},
+  {"countryCode":"CA","countryName":"Canada","indicator":"GDP","year":2020,"value":1.64,"source":"seed"},
+  {"countryCode":"CA","countryName":"Canada","indicator":"GDP","year":2021,"value":1.99,"source":"seed"},
+  {"countryCode":"CA","countryName":"Canada","indicator":"GDP","year":2022,"value":2.14,"source":"seed"},
+  {"countryCode":"US","countryName":"United States","indicator":"POPULATION","year":2020,"value":331.5,"source":"seed"},
+  {"countryCode":"CN","countryName":"China","indicator":"POPULATION","year":2020,"value":1412.0,"source":"seed"}
+]

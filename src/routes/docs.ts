@@ -40,6 +40,17 @@ const docsRoute: FastifyPluginAsync = async (app) => {
         },
         {
           method: 'GET',
+          path: '/api/v1/timeseries',
+          description: 'Time-series values loaded from Python ETL JSON/CSV outputs',
+          query: {
+            country: 'ISO2/ISO3 country code',
+            indicator: 'indicator name/code',
+            fromYear: 'number>=1900',
+            toYear: 'number<=2100'
+          }
+        },
+        {
+          method: 'GET',
           path: '/api/v1/docs',
           description: 'Lightweight API documentation payload'
         }

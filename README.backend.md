@@ -34,6 +34,7 @@ Health endpoint:
 - `GET /api/v1/countries` - country list with filtering/sorting/pagination
 - `GET /api/v1/countries/summary` - aggregate summary for current filter
 - `GET /api/v1/metrics` - request/uptime counters
+- `GET /api/v1/timeseries` - time series values from ETL JSON/CSV files
 - `GET /api/v1/docs` - machine-readable endpoint catalog
 
 ### `/api/v1/countries` query params
@@ -43,6 +44,23 @@ Health endpoint:
 - `sortBy` one of `population|gdpPerCapita|lifeExpectancy|internetUsers|co2PerCapita`
 - `limit` positive integer
 - `offset` integer >= 0
+
+### `/api/v1/timeseries` query params
+
+- `country` ISO country code (e.g. `US`, `CN`, `JPN`)
+- `indicator` metric key/code (e.g. `GDP`)
+- `fromYear` integer >= 1900
+- `toYear` integer <= 2100
+
+Data source resolution order:
+
+1. `TIMESERIES_DATA_PATH` (if set)
+2. `fixtures/timeseries.sample.json`
+3. `fixtures/timeseries.sample.csv`
+4. `db/timeseries.json`
+5. `db/timeseries.csv`
+6. `scripts/timeseries.json`
+7. built-in fixture fallback
 
 ## Scripts
 
