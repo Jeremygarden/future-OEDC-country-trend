@@ -36,6 +36,7 @@ from data_client import (  # noqa: E402
     latest_value_per_country,
     rank_countries,
 )
+from dimension_pages import render_dimension_tabs  # noqa: E402
 
 
 def configure_page() -> None:
@@ -75,7 +76,7 @@ def render_sidebar() -> tuple[list[str], str]:
         st.caption(f"URL: `{health.backend_url}`")
 
         st.divider()
-        st.caption("Iteration 3 — KPI metric cards")
+        st.caption("Iteration 4 — per-dimension tabs")
 
     return chosen, health.message
 
@@ -168,9 +169,20 @@ def main() -> None:
 
     render_country_overview(chosen)
     st.divider()
-    render_comparison_charts(chosen)
-    st.divider()
-    render_country_table()
+
+    overview_tab, dimensions_tab, table_tab = st.tabs(
+        ["📊 Overview", "🗂 Dimensions", "📋 Country table"]
+    )
+    with overview_tab:
+        render_comparison_charts(chosen)
+    with dimensions_tab:
+        st.subheader("Per-dimension comparison")
+        st.caption(
+            "Debt, Energy, Taxation, FDI, Household savings, Health spending"
+        )
+        render_dimension_tabs(chosen)
+    with table_tab:
+        render_country_table()
 
 
 if __name__ == "__main__":
