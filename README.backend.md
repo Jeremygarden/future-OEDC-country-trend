@@ -38,6 +38,7 @@ Health endpoint:
 - `GET /api/v1/indicators` - list available indicators grouped by country
 - `GET /api/v1/compare` - compare one indicator across multiple countries
 - `GET /api/v1/forecast` - project future values using linear/CAGR methods
+- `GET /api/v1/openapi.json` - OpenAPI 3.0 spec describing all endpoints
 - `GET /api/v1/docs` - machine-readable endpoint catalog
 
 ### `/api/v1/countries` query params

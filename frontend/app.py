@@ -38,6 +38,8 @@ from data_client import (  # noqa: E402
 )
 from dimension_pages import render_dimension_tabs  # noqa: E402
 
+DEFAULT_YEAR_RANGE = (2015, 2024)
+
 
 def configure_page() -> None:
     st.set_page_config(
@@ -55,7 +57,7 @@ def render_header() -> None:
     )
 
 
-def render_sidebar() -> tuple[list[str], str]:
+def render_sidebar() -> tuple[list[str], tuple[int, int]]:
     with st.sidebar:
         st.header("⚙️ Controls")
         labels = {iso: f"{m['flag']} {m['name']}" for iso, m in COUNTRY_META.items()}
@@ -64,11 +66,22 @@ def render_sidebar() -> tuple[list[str], str]:
             options=list(COUNTRY_META.keys()),
             default=list(COUNTRY_META.keys()),
             format_func=lambda iso: labels[iso],
+            help="Select up to 5 countries for side-by-side comparison.",
+        )
+
+        year_range = st.slider(
+            "Year range",
+            min_value=2000,
+            max_value=2024,
+            value=DEFAULT_YEAR_RANGE,
+            step=1,
+            help="Window applied to every comparison chart and KPI card.",
         )
 
         st.divider()
         st.subheader("Backend")
-        health = check_health()
+        with st.spinner("Pinging backend…"):
+            health = check_health()
         if health.online:
             st.success(f"✅ {health.message}")
         else:
@@ -76,9 +89,9 @@ def render_sidebar() -> tuple[list[str], str]:
         st.caption(f"URL: `{health.backend_url}`")
 
         st.divider()
-        st.caption("Iteration 4 — per-dimension tabs")
+        st.caption("Iteration 5 — UI polish")
 
-    return chosen, health.message
+    return chosen, year_range
 
 
 def render_country_overview(chosen: list[str]) -> None:
@@ -90,10 +103,15 @@ def render_country_overview(chosen: list[str]) -> None:
             st.metric(label=f"{meta['flag']} {meta['name']}", value=iso3, delta=meta["region"])
 
 
-def render_kpi_row(chosen: list[str], indicator_key: str) -> None:
+def render_kpi_row(chosen: list[str], indicator_key: str, year_range: tuple[int, int]) -> None:
     """KPI metric cards: latest value, YoY delta, rank per country."""
     meta = INDICATORS[indicator_key]
-    df = get_indicator_timeseries(chosen, indicator_key)
+    try:
+        df = get_indicator_timeseries(chosen, indicator_key, year_range[0], year_range[1])
+    except Exception as exc:  # noqa: BLE001 — defensive UI boundary
+        st.error(f"Failed to load {meta['label']}: {exc}")
+        return
+
     latest = latest_value_per_country(df)
     ranked = rank_countries(latest, ascending=False)
 
@@ -123,7 +141,12 @@ def render_kpi_row(chosen: list[str], indicator_key: str) -> None:
 
 
 def render_country_table() -> None:
-    df, source = get_country_table()
+    with st.spinner("Loading country list…"):
+        try:
+            df, source = get_country_table()
+        except Exception as exc:  # noqa: BLE001
+            st.error(f"Failed to load countries: {exc}")
+            return
     if df.empty:
         st.info("No country list available from backend or fixture.")
         return
@@ -131,37 +154,42 @@ def render_country_table() -> None:
     st.dataframe(df, hide_index=True, use_container_width=True)
 
 
-def render_comparison_charts(chosen: list[str]) -> None:
+def render_comparison_charts(chosen: list[str], year_range: tuple[int, int]) -> None:
     st.subheader("📈 Comparison line charts")
     st.caption(
-        "Multi-country trends 2015–2024. Backend `/compare` is used when "
-        "available; otherwise deterministic synthetic series (`source=synthetic`)."
+        "Multi-country trends. Backend `/compare` is used when available; "
+        "otherwise deterministic synthetic series (`source=synthetic`)."
     )
 
     indicator_keys = ["gdp", "cpi", "unemployment"]
     tabs = st.tabs([INDICATORS[k]["label"] for k in indicator_keys])
     for tab, key in zip(tabs, indicator_keys):
         with tab:
-            render_kpi_row(chosen, key)
-            df = get_indicator_timeseries(chosen, key)
-            meta = INDICATORS[key]
-            line_col, bar_col = st.columns([2, 1])
-            with line_col:
-                st.plotly_chart(
-                    line_chart(df, meta["label"], meta["unit"]),
-                    use_container_width=True,
-                )
-            with bar_col:
-                st.plotly_chart(
-                    bar_chart(df, f"Latest {meta['label']}", meta["unit"]),
-                    use_container_width=True,
-                )
+            with st.spinner(f"Loading {INDICATORS[key]['label']}…"):
+                render_kpi_row(chosen, key, year_range)
+                try:
+                    df = get_indicator_timeseries(chosen, key, year_range[0], year_range[1])
+                except Exception as exc:  # noqa: BLE001
+                    st.error(f"Failed to load chart data: {exc}")
+                    continue
+                meta = INDICATORS[key]
+                line_col, bar_col = st.columns([2, 1])
+                with line_col:
+                    st.plotly_chart(
+                        line_chart(df, meta["label"], meta["unit"]),
+                        use_container_width=True,
+                    )
+                with bar_col:
+                    st.plotly_chart(
+                        bar_chart(df, f"Latest {meta['label']}", meta["unit"]),
+                        use_container_width=True,
+                    )
 
 
 def main() -> None:
     configure_page()
     render_header()
-    chosen, _ = render_sidebar()
+    chosen, year_range = render_sidebar()
 
     if not chosen:
         st.warning("Select at least one country in the sidebar to begin.")
@@ -174,13 +202,14 @@ def main() -> None:
         ["📊 Overview", "🗂 Dimensions", "📋 Country table"]
     )
     with overview_tab:
-        render_comparison_charts(chosen)
+        render_comparison_charts(chosen, year_range)
     with dimensions_tab:
         st.subheader("Per-dimension comparison")
         st.caption(
             "Debt, Energy, Taxation, FDI, Household savings, Health spending"
         )
-        render_dimension_tabs(chosen)
+        with st.spinner("Loading dimension pages…"):
+            render_dimension_tabs(chosen, year_range)
     with table_tab:
         render_country_table()
 

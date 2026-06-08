@@ -79,6 +79,11 @@ const docsRoute: FastifyPluginAsync = async (app) => {
         },
         {
           method: 'GET',
+          path: '/api/v1/openapi.json',
+          description: 'OpenAPI 3.0 JSON describing all API endpoints'
+        },
+        {
+          method: 'GET',
           path: '/api/v1/docs',
           description: 'Lightweight API documentation payload'
         }

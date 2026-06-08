@@ -8,6 +8,7 @@ import docsRoute from './routes/docs.js';
 import timeseriesRoute from './routes/timeseries.js';
 import indicatorsRoute from './routes/indicators.js';
 import forecastRoute from './routes/forecast.js';
+import openapiRoute from './routes/openapi.js';
 import { observabilityPlugin } from './plugins/observability.js';
 import { rateLimitPlugin } from './plugins/rate-limit.js';
 import { errorHandlerPlugin } from './plugins/error-handler.js';
@@ -31,6 +32,7 @@ export function createApp() {
   app.register(timeseriesRoute, { prefix: '/api/v1' });
   app.register(indicatorsRoute, { prefix: '/api/v1' });
   app.register(forecastRoute, { prefix: '/api/v1' });
+  app.register(openapiRoute, { prefix: '/api/v1' });
   app.register(docsRoute, { prefix: '/api/v1' });
 
   return app;
