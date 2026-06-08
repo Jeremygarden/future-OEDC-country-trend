@@ -37,6 +37,7 @@ Health endpoint:
 - `GET /api/v1/timeseries` - time series values from ETL JSON/CSV files
 - `GET /api/v1/indicators` - list available indicators grouped by country
 - `GET /api/v1/compare` - compare one indicator across multiple countries
+- `GET /api/v1/forecast` - project future values using linear/CAGR methods
 - `GET /api/v1/docs` - machine-readable endpoint catalog
 
 ### `/api/v1/countries` query params
@@ -75,6 +76,13 @@ Data source resolution order:
 
 - `countries` comma-separated ISO codes (e.g. `US,CN,JP,AU,CA`)
 - `indicator` indicator name/code (e.g. `GDP`)
+
+### `/api/v1/forecast` query params
+
+- `country` ISO country code
+- `indicator` indicator name/code
+- `yearsAhead` integer 1..20 (default 5)
+- `method` `linear` or `cagr` (default `linear`)
 
 ## Scripts
 

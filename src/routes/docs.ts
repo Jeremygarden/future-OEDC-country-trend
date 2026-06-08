@@ -68,6 +68,17 @@ const docsRoute: FastifyPluginAsync = async (app) => {
         },
         {
           method: 'GET',
+          path: '/api/v1/forecast',
+          description: 'Project indicator values using linear or CAGR method',
+          query: {
+            country: 'ISO country code',
+            indicator: 'indicator name/code',
+            yearsAhead: 'integer 1..20 (default 5)',
+            method: 'linear|cagr (default linear)'
+          }
+        },
+        {
+          method: 'GET',
           path: '/api/v1/docs',
           description: 'Lightweight API documentation payload'
         }
