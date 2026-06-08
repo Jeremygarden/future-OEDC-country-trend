@@ -37,17 +37,38 @@ SNAPSHOT_PATH = REPO_ROOT / "data" / "snapshots" / "country_stats.json"
 # Streamlit's rerun model.
 _SNAPSHOT_CACHE: dict[str, Any] | None = None
 
-INDICATORS = {
-    "gdp": {"label": "GDP (USD trillions)", "unit": "T$", "code": "NY.GDP.MKTP.CD"},
-    "cpi": {"label": "CPI inflation (%)", "unit": "%", "code": "FP.CPI.TOTL.ZG"},
-    "unemployment": {"label": "Unemployment (%)", "unit": "%", "code": "SL.UEM.TOTL.ZS"},
-    "debt": {"label": "Govt debt (% of GDP)", "unit": "%", "code": "GC.DOD.TOTL.GD.ZS"},
-    "energy": {"label": "Energy use per capita (kg oil eq.)", "unit": "kgoe", "code": "EG.USE.PCAP.KG.OE"},
-    "tax": {"label": "Tax revenue (% of GDP)", "unit": "%", "code": "GC.TAX.TOTL.GD.ZS"},
-    "fdi": {"label": "FDI net inflows (% of GDP)", "unit": "%", "code": "BX.KLT.DINV.WD.GD.ZS"},
-    "savings": {"label": "Household savings (% of disposable income)", "unit": "%", "code": "SAVE_HH"},
-    "health": {"label": "Health spending (% of GDP)", "unit": "%", "code": "SH.XPD.CHEX.GD.ZS"},
-}
+
+# Fallback copy of etl/dimension_catalog.py (trimmed to fields needed by frontend)
+_FALLBACK_DIMENSIONS: list[dict[str, Any]] = [
+    {"key": "gdp", "label": "GDP", "wb_code": "NY.GDP.MKTP.CD", "group": "economy", "group_label": "Economy", "unit": "T$", "decimals": 2, "good_when": "high", "description": "Gross domestic product, current USD"},
+    {"key": "gdp_growth", "label": "GDP growth", "wb_code": "NY.GDP.MKTP.KD.ZG", "group": "economy", "group_label": "Economy", "unit": "%", "decimals": 2, "good_when": "high", "description": "Annual GDP growth (constant prices)"},
+    {"key": "cpi", "label": "Inflation", "wb_code": "FP.CPI.TOTL.ZG", "group": "economy", "group_label": "Economy", "unit": "%", "decimals": 2, "good_when": "low", "description": "Inflation, consumer prices (annual %)"},
+    {"key": "unemployment", "label": "Unemployment", "wb_code": "SL.UEM.TOTL.ZS", "group": "economy", "group_label": "Economy", "unit": "%", "decimals": 2, "good_when": "low", "description": "Unemployment, total (% of labor force)"},
+    {"key": "debt", "label": "Govt debt %GDP", "wb_code": "GC.DOD.TOTL.GD.ZS", "group": "economy", "group_label": "Economy", "unit": "%", "decimals": 2, "good_when": "low", "description": "Central government debt, total (% of GDP)"},
+    {"key": "trade", "label": "Trade %GDP", "wb_code": "NE.TRD.GNFS.ZS", "group": "trade_finance", "group_label": "Trade & Finance", "unit": "%", "decimals": 2, "good_when": "neutral", "description": "Trade (% of GDP)"},
+    {"key": "fdi", "label": "FDI inflows %GDP", "wb_code": "BX.KLT.DINV.WD.GD.ZS", "group": "trade_finance", "group_label": "Trade & Finance", "unit": "%", "decimals": 2, "good_when": "neutral", "description": "Foreign direct investment, net inflows (% of GDP)"},
+    {"key": "savings", "label": "Gross savings %GDP", "wb_code": "NY.GNS.ICTR.ZS", "group": "trade_finance", "group_label": "Trade & Finance", "unit": "%", "decimals": 2, "good_when": "high", "description": "Gross savings (% of GDP)"},
+    {"key": "tax", "label": "Tax revenue %GDP", "wb_code": "GC.TAX.TOTL.GD.ZS", "group": "trade_finance", "group_label": "Trade & Finance", "unit": "%", "decimals": 2, "good_when": "neutral", "description": "Tax revenue (% of GDP)"},
+    {"key": "reserves", "label": "Reserves", "wb_code": "FI.RES.TOTL.CD", "group": "trade_finance", "group_label": "Trade & Finance", "unit": "B$", "decimals": 2, "good_when": "high", "description": "Total reserves (includes gold), current USD"},
+    {"key": "pop_total", "label": "Population", "wb_code": "SP.POP.TOTL", "group": "society", "group_label": "Society", "unit": "M", "decimals": 2, "good_when": "high", "description": "Population, total"},
+    {"key": "pop_aging", "label": "65+ %", "wb_code": "SP.POP.65UP.TO.ZS", "group": "society", "group_label": "Society", "unit": "%", "decimals": 2, "good_when": "neutral", "description": "Population ages 65 and above (% of total)"},
+    {"key": "urban", "label": "Urban population %", "wb_code": "SP.URB.TOTL.IN.ZS", "group": "society", "group_label": "Society", "unit": "%", "decimals": 2, "good_when": "high", "description": "Urban population (% of total)"},
+    {"key": "life_exp", "label": "Life expectancy", "wb_code": "SP.DYN.LE00.IN", "group": "society", "group_label": "Society", "unit": "yrs", "decimals": 2, "good_when": "high", "description": "Life expectancy at birth, total (years)"},
+    {"key": "health", "label": "Health expenditure %GDP", "wb_code": "SH.XPD.CHEX.GD.ZS", "group": "society", "group_label": "Society", "unit": "%", "decimals": 2, "good_when": "high", "description": "Current health expenditure (% of GDP)"},
+    {"key": "rd", "label": "R&D expenditure %GDP", "wb_code": "GB.XPD.RSDV.GD.ZS", "group": "innovation_environment", "group_label": "Innovation & Environment", "unit": "%", "decimals": 2, "good_when": "high", "description": "Research and development expenditure (% of GDP)"},
+    {"key": "internet", "label": "Internet users %", "wb_code": "IT.NET.USER.ZS", "group": "innovation_environment", "group_label": "Innovation & Environment", "unit": "%", "decimals": 2, "good_when": "high", "description": "Individuals using the Internet (% of population)"},
+    {"key": "education", "label": "Education spending %GDP", "wb_code": "SE.XPD.TOTL.GD.ZS", "group": "innovation_environment", "group_label": "Innovation & Environment", "unit": "%", "decimals": 2, "good_when": "high", "description": "Government expenditure on education, total (% of GDP)"},
+    {"key": "energy", "label": "Energy use kgoe/cap", "wb_code": "EG.USE.PCAP.KG.OE", "group": "innovation_environment", "group_label": "Innovation & Environment", "unit": "kgoe", "decimals": 2, "good_when": "neutral", "description": "Energy use (kg of oil equivalent per capita)"},
+    {"key": "co2", "label": "CO2 per capita", "wb_code": "EN.GHG.CO2.PC.CE.AR5", "group": "innovation_environment", "group_label": "Innovation & Environment", "unit": "tCO2", "decimals": 2, "good_when": "low", "description": "CO2 emissions (metric tons per capita, AR5 methodology)"},
+]
+
+_FALLBACK_GROUPS: list[dict[str, Any]] = [
+    {"key": "economy", "label": "Economy", "indicators": ["gdp", "gdp_growth", "cpi", "unemployment", "debt"]},
+    {"key": "trade_finance", "label": "Trade & Finance", "indicators": ["trade", "fdi", "savings", "tax", "reserves"]},
+    {"key": "society", "label": "Society", "indicators": ["pop_total", "pop_aging", "urban", "life_exp", "health"]},
+    {"key": "innovation_environment", "label": "Innovation & Environment", "indicators": ["rd", "internet", "education", "energy", "co2"]},
+]
+
 
 COUNTRY_META = {
     "USA": {"name": "United States", "flag": "🇺🇸", "region": "North America"},
@@ -67,6 +88,140 @@ class HealthStatus:
 
 def get_backend_url() -> str:
     return os.environ.get("BACKEND_API_URL", DEFAULT_BACKEND_URL).rstrip("/")
+
+
+def load_snapshot() -> dict[str, Any] | None:
+    """Return the offline World Bank snapshot, or None if unavailable.
+
+    Built by ``scripts/build_snapshot.py``; baked into the repo so the
+    Streamlit Cloud deployment has real numbers even without a backend.
+
+    The result is memoized in module scope (``_SNAPSHOT_CACHE``) so repeated
+    Streamlit reruns hit a hot cache instead of re-parsing JSON.
+    """
+    global _SNAPSHOT_CACHE
+    if _SNAPSHOT_CACHE is not None:
+        return _SNAPSHOT_CACHE
+    if not SNAPSHOT_PATH.exists():
+        return None
+    try:
+        _SNAPSHOT_CACHE = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
+        return _SNAPSHOT_CACHE
+    except (OSError, ValueError):
+        return None
+
+
+def _catalog_dimensions() -> list[dict[str, Any]]:
+    snap = load_snapshot()
+    if snap and isinstance(snap.get("dimensions"), list) and snap["dimensions"]:
+        return list(snap["dimensions"])
+    return [dict(row) for row in _FALLBACK_DIMENSIONS]
+
+
+def _build_indicators(dimensions: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    indicators: dict[str, dict[str, Any]] = {}
+    legacy_label_overrides = {
+        "gdp": "GDP (USD trillions)",
+        "cpi": "CPI inflation (%)",
+        "unemployment": "Unemployment (%)",
+        "debt": "Govt debt (% of GDP)",
+        "tax": "Tax revenue (% of GDP)",
+        "fdi": "FDI net inflows (% of GDP)",
+        "health": "Health spending (% of GDP)",
+    }
+    for dim in dimensions:
+        key = str(dim.get("key", "")).strip()
+        if not key:
+            continue
+        indicators[key] = {
+            "code": dim.get("wb_code") or dim.get("code") or "",
+            "label": legacy_label_overrides.get(key, dim.get("label") or key),
+            "unit": dim.get("unit") or "",
+            "group": dim.get("group") or "",
+            "group_label": dim.get("group_label") or "",
+            "decimals": int(dim.get("decimals", 2)),
+            "good_when": dim.get("good_when") or "neutral",
+            "description": dim.get("description") or "",
+        }
+    return indicators
+
+
+def _build_dimension_groups(
+    dimensions: list[dict[str, Any]],
+    indicators: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    snap = load_snapshot() or {}
+    group_labels: dict[str, str] = {}
+    if isinstance(snap.get("group_labels"), dict):
+        group_labels = {str(k): str(v) for k, v in snap["group_labels"].items()}
+
+    by_group: dict[str, list[str]] = {}
+    order: list[str] = []
+    for dim in dimensions:
+        key = str(dim.get("key", "")).strip()
+        group = str(dim.get("group", "")).strip()
+        if not key or not group or key not in indicators:
+            continue
+        if group not in by_group:
+            by_group[group] = []
+            order.append(group)
+        by_group[group].append(key)
+        if group not in group_labels and dim.get("group_label"):
+            group_labels[group] = str(dim["group_label"])
+
+    out: list[dict[str, Any]] = []
+    for group in order:
+        out.append(
+            {
+                "key": group,
+                "label": group_labels.get(group, group.replace("_", " ").title()),
+                "indicators": by_group.get(group, []),
+            }
+        )
+
+    if not out:
+        return [dict(g) for g in _FALLBACK_GROUPS]
+    return out
+
+
+def _load_indicator_catalog() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
+    dims = _catalog_dimensions()
+    indicators = _build_indicators(dims)
+    if not indicators:
+        indicators = _build_indicators([dict(row) for row in _FALLBACK_DIMENSIONS])
+        return indicators, [dict(g) for g in _FALLBACK_GROUPS]
+    groups = _build_dimension_groups(dims, indicators)
+    if not groups:
+        groups = [dict(g) for g in _FALLBACK_GROUPS]
+    return indicators, groups
+
+
+INDICATORS, DIMENSION_GROUPS = _load_indicator_catalog()
+
+
+def get_year_range() -> tuple[int, int]:
+    snap = load_snapshot()
+    if snap:
+        years = snap.get("year_range")
+        if isinstance(years, (list, tuple)) and len(years) == 2:
+            try:
+                start = int(years[0])
+                end = int(years[1])
+                return (start, end)
+            except (TypeError, ValueError):
+                pass
+    return (2010, 2024)
+
+
+def format_value(key: str, value: float | None) -> str:
+    if value is None:
+        return "—"
+    meta = INDICATORS.get(key, {})
+    decimals = int(meta.get("decimals", 2))
+    unit = str(meta.get("unit", "")).strip()
+    if key in {"pop_total", "reserves"}:
+        return f"{value:,.{decimals}f} {unit}".strip()
+    return f"{value:.{decimals}f} {unit}".strip()
 
 
 def check_health(timeout: float = 1.5) -> HealthStatus:
@@ -136,24 +291,6 @@ def load_fixture_countries() -> list[dict[str, Any]]:
         return []
 
 
-def load_snapshot() -> dict[str, Any] | None:
-    """Return the offline World Bank snapshot, or None if unavailable.
-
-    Built by ``scripts/build_snapshot.py``; baked into the repo so the
-    Streamlit Cloud deployment has real numbers even without a backend.
-    """
-    global _SNAPSHOT_CACHE
-    if _SNAPSHOT_CACHE is not None:
-        return _SNAPSHOT_CACHE
-    if not SNAPSHOT_PATH.exists():
-        return None
-    try:
-        _SNAPSHOT_CACHE = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
-        return _SNAPSHOT_CACHE
-    except (OSError, ValueError):
-        return None
-
-
 def snapshot_rows_for(
     iso_codes: list[str],
     indicator_key: str,
@@ -175,9 +312,6 @@ def snapshot_rows_for(
         if not (year_start <= year <= year_end):
             continue
         value = float(row["value"])
-        # GDP is stored in raw USD; the UI labels it in trillions.
-        if indicator_key == "gdp":
-            value = value / 1e12
         out.append(
             {
                 "year": year,
@@ -201,7 +335,8 @@ def get_country_table(prefer_backend: bool = True) -> tuple[pd.DataFrame, str]:
 
     # Synthesize a small country table from the snapshot's latest GDP rows so
     # the dashboard's overview cards have real numbers even in offline mode.
-    snap_rows = snapshot_rows_for(list(COUNTRY_META.keys()), "gdp", 2010, 2024)
+    year_start, year_end = get_year_range()
+    snap_rows = snapshot_rows_for(list(COUNTRY_META.keys()), "gdp", year_start, year_end)
     if snap_rows:
         by_iso: dict[str, dict[str, Any]] = {}
         for r in snap_rows:
@@ -232,14 +367,25 @@ def _synth_series(iso3: str, indicator_key: str, years: Iterable[int]) -> list[f
     rng = random.Random(seed)
     base_by_indicator = {
         "gdp": {"USA": 23.0, "CHN": 17.5, "JPN": 4.2, "AUS": 1.6, "CAN": 2.0},
+        "gdp_growth": {"USA": 2.0, "CHN": 5.0, "JPN": 1.0, "AUS": 2.3, "CAN": 2.1},
         "cpi": {"USA": 3.2, "CHN": 1.0, "JPN": 1.5, "AUS": 4.0, "CAN": 2.8},
         "unemployment": {"USA": 4.0, "CHN": 5.2, "JPN": 2.7, "AUS": 4.1, "CAN": 5.5},
         "debt": {"USA": 120.0, "CHN": 75.0, "JPN": 250.0, "AUS": 50.0, "CAN": 105.0},
-        "energy": {"USA": 6800.0, "CHN": 2500.0, "JPN": 3400.0, "AUS": 5400.0, "CAN": 7500.0},
-        "tax": {"USA": 11.0, "CHN": 9.0, "JPN": 12.0, "AUS": 23.0, "CAN": 14.0},
+        "trade": {"USA": 25.0, "CHN": 37.0, "JPN": 35.0, "AUS": 45.0, "CAN": 67.0},
         "fdi": {"USA": 2.0, "CHN": 1.5, "JPN": 0.8, "AUS": 3.0, "CAN": 2.5},
-        "savings": {"USA": 7.0, "CHN": 30.0, "JPN": 4.0, "AUS": 5.0, "CAN": 6.0},
+        "savings": {"USA": 18.0, "CHN": 45.0, "JPN": 30.0, "AUS": 24.0, "CAN": 20.0},
+        "tax": {"USA": 11.0, "CHN": 9.0, "JPN": 12.0, "AUS": 23.0, "CAN": 14.0},
+        "reserves": {"USA": 35.0, "CHN": 3200.0, "JPN": 1200.0, "AUS": 80.0, "CAN": 120.0},
+        "pop_total": {"USA": 335.0, "CHN": 1410.0, "JPN": 124.0, "AUS": 26.0, "CAN": 40.0},
+        "pop_aging": {"USA": 17.0, "CHN": 14.0, "JPN": 29.0, "AUS": 17.0, "CAN": 19.0},
+        "urban": {"USA": 83.0, "CHN": 66.0, "JPN": 92.0, "AUS": 86.0, "CAN": 82.0},
+        "life_exp": {"USA": 78.0, "CHN": 78.0, "JPN": 84.0, "AUS": 83.0, "CAN": 82.0},
         "health": {"USA": 17.5, "CHN": 5.5, "JPN": 11.0, "AUS": 9.5, "CAN": 11.5},
+        "rd": {"USA": 3.4, "CHN": 2.6, "JPN": 3.2, "AUS": 1.8, "CAN": 1.7},
+        "internet": {"USA": 93.0, "CHN": 78.0, "JPN": 94.0, "AUS": 96.0, "CAN": 95.0},
+        "education": {"USA": 4.9, "CHN": 4.0, "JPN": 3.3, "AUS": 5.0, "CAN": 5.2},
+        "energy": {"USA": 6800.0, "CHN": 2500.0, "JPN": 3400.0, "AUS": 5400.0, "CAN": 7500.0},
+        "co2": {"USA": 14.0, "CHN": 8.0, "JPN": 8.5, "AUS": 15.0, "CAN": 14.5},
     }
     base = base_by_indicator.get(indicator_key, {}).get(iso3, 5.0)
     out: list[float] = []

@@ -120,10 +120,25 @@ def test_rank_countries_descending() -> None:
     assert int(ranked.loc["JPN", "rank"]) == 3
 
 
+def test_snapshot_gdp_values_are_prescaled_not_divided_again() -> None:
+    snap = data_client.load_snapshot()
+    if not snap:
+        pytest.skip("snapshot not built; run scripts/build_snapshot.py")
+
+    rows = data_client.snapshot_rows_for(["USA"], "gdp", 2024, 2024)
+    assert rows
+    assert rows[0]["value"] == pytest.approx(28.75, abs=0.05)
+
+
 def test_indicator_metadata_contains_required_keys() -> None:
     for key, meta in INDICATORS.items():
         assert "label" in meta
         assert "unit" in meta
         assert "code" in meta
+        assert "group" in meta
+        assert "group_label" in meta
+        assert "decimals" in meta
+        assert "good_when" in meta
+        assert "description" in meta
     # Default supported countries cover the task's scope.
     assert set(COUNTRY_META.keys()) >= {"USA", "CHN", "JPN", "AUS", "CAN"}
