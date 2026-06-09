@@ -32,7 +32,7 @@
   },
   "year_range": [
     2010,
-    2024
+    2026
   ],
   "groups": [
     "economy",
@@ -288,7 +288,7 @@
       "description": "CO2 emissions (metric tons per capita, AR5 methodology)"
     }
   ],
-  "row_count": 1395,
+  "row_count": 1595,
   "rows": [
     {
       "indicator": "cpi",
@@ -12844,6 +12844,1806 @@
       "country": "United States",
       "year": 2024,
       "value": 25.38
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 30.77
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 32.38
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 2.1
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 2.3
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 2.6
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 2.3
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 4.1
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 4.3
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 122.5
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 125.0
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 25.0
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 24.5
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 1.2
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 1.4
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 17.5
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 17.6
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 11.0
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 11.5
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 950.0
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 970.0
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 341.9
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 343.0
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 18.4
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 18.85
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 80.17
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 80.22
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 79.1
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 79.3
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 16.8
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 16.9
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 3.5
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 3.55
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 95.5
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 96.2
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 5.4
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 5.4
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 6300.0
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 6250.0
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2025,
+      "value": 13.4
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "USA",
+      "country": "United States",
+      "year": 2026,
+      "value": 13.2
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 19.6
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 20.85
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 5.0
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 4.5
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 0.3
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 0.9
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 5.2
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 5.1
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 100.0
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 106.9
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 37.5
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 38.0
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 0.2
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 0.3
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 42.5
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 42.0
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 6.9
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 6.8
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 3470.0
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 3500.0
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 1408.0
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 1405.0
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 15.3
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 15.95
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 66.5
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 67.0
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 78.2
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 78.4
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 6.1
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 6.2
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 2.7
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 2.8
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 93.5
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 94.5
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 3.95
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 4.0
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 2950.0
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 3030.0
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2025,
+      "value": 9.4
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "CHN",
+      "country": "China",
+      "year": 2026,
+      "value": 9.45
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 4.44
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 4.38
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 1.1
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 0.6
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 2.7
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 2.0
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 2.5
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 2.6
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 232.0
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 230.0
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 47.0
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 47.5
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 0.5
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 0.5
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 31.5
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 31.5
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 13.7
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 13.5
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 1250.0
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 1260.0
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 123.3
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 122.4
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 30.0
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 30.2
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 92.3
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 92.4
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 84.1
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 84.2
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 10.8
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 10.9
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 3.45
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 3.5
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 86.5
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 87.3
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 3.4
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 3.4
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 2950.0
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 2900.0
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2025,
+      "value": 7.65
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "JPN",
+      "country": "Japan",
+      "year": 2026,
+      "value": 7.5
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 1.84
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 2.12
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 1.8
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 2.2
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 3.3
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 3.0
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 4.3
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 4.6
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 58.5
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 59.5
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 46.5
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 45.8
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 3.0
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 2.8
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 23.0
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 23.0
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 23.5
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 23.5
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 61.0
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 62.0
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 27.5
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 27.8
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 18.1
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 18.45
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 87.7
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 87.8
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 83.2
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 83.3
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 10.5
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 10.6
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 1.9
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 1.95
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 96.5
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 96.8
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 5.1
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 5.1
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 4650.0
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 4550.0
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2025,
+      "value": 13.9
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "AUS",
+      "country": "Australia",
+      "year": 2026,
+      "value": 13.7
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 2.32
+    },
+    {
+      "indicator": "gdp",
+      "indicator_code": "NY.GDP.MKTP.CD",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 2.51
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 1.4
+    },
+    {
+      "indicator": "gdp_growth",
+      "indicator_code": "NY.GDP.MKTP.KD.ZG",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 1.5
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 2.4
+    },
+    {
+      "indicator": "cpi",
+      "indicator_code": "FP.CPI.TOTL.ZG",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 2.3
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 6.7
+    },
+    {
+      "indicator": "unemployment",
+      "indicator_code": "SL.UEM.TOTL.ZS",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 6.9
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 65.5
+    },
+    {
+      "indicator": "debt",
+      "indicator_code": "GC.DOD.TOTL.GD.ZS",
+      "group": "economy",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 66.0
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 64.0
+    },
+    {
+      "indicator": "trade",
+      "indicator_code": "NE.TRD.GNFS.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 63.0
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 2.7
+    },
+    {
+      "indicator": "fdi",
+      "indicator_code": "BX.KLT.DINV.WD.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 2.6
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 21.5
+    },
+    {
+      "indicator": "savings",
+      "indicator_code": "NY.GNS.ICTR.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 21.5
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 13.9
+    },
+    {
+      "indicator": "tax",
+      "indicator_code": "GC.TAX.TOTL.GD.ZS",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 13.9
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 122.0
+    },
+    {
+      "indicator": "reserves",
+      "indicator_code": "FI.RES.TOTL.CD",
+      "group": "trade_finance",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 125.0
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 41.7
+    },
+    {
+      "indicator": "pop_total",
+      "indicator_code": "SP.POP.TOTL",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 42.0
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 20.25
+    },
+    {
+      "indicator": "pop_aging",
+      "indicator_code": "SP.POP.65UP.TO.ZS",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 20.7
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 82.85
+    },
+    {
+      "indicator": "urban",
+      "indicator_code": "SP.URB.TOTL.IN.ZS",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 83.0
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 82.3
+    },
+    {
+      "indicator": "life_exp",
+      "indicator_code": "SP.DYN.LE00.IN",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 82.5
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 11.4
+    },
+    {
+      "indicator": "health",
+      "indicator_code": "SH.XPD.CHEX.GD.ZS",
+      "group": "society",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 11.5
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 1.78
+    },
+    {
+      "indicator": "rd",
+      "indicator_code": "GB.XPD.RSDV.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 1.78
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 94.8
+    },
+    {
+      "indicator": "internet",
+      "indicator_code": "IT.NET.USER.ZS",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 95.2
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 4.9
+    },
+    {
+      "indicator": "education",
+      "indicator_code": "SE.XPD.TOTL.GD.ZS",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 4.9
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 7050.0
+    },
+    {
+      "indicator": "energy",
+      "indicator_code": "EG.USE.PCAP.KG.OE",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 6950.0
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2025,
+      "value": 13.85
+    },
+    {
+      "indicator": "co2",
+      "indicator_code": "EN.GHG.CO2.PC.CE.AR5",
+      "group": "innovation_environment",
+      "iso3": "CAN",
+      "country": "Canada",
+      "year": 2026,
+      "value": 13.7
     }
   ]
 }

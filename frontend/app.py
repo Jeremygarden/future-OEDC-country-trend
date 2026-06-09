@@ -35,7 +35,7 @@ from dimension_pages import render_dimension_tabs  # noqa: E402
 from overview_page import render_overview  # noqa: E402
 from country_peers_table import render_country_peers_table  # noqa: E402
 
-DEFAULT_YEAR_RANGE = (2015, 2024)
+DEFAULT_YEAR_RANGE = (2015, 2026)
 
 
 def configure_page() -> None:
@@ -69,7 +69,7 @@ def render_sidebar() -> tuple[list[str], tuple[int, int]]:
         year_range = st.slider(
             "Year range",
             min_value=2000,
-            max_value=2024,
+            max_value=2026,
             value=DEFAULT_YEAR_RANGE,
             step=1,
             help="Window applied to every comparison chart and KPI card.",

@@ -210,7 +210,7 @@ def get_year_range() -> tuple[int, int]:
                 return (start, end)
             except (TypeError, ValueError):
                 pass
-    return (2010, 2024)
+    return (2010, 2026)
 
 
 def format_value(key: str, value: float | None) -> str:
@@ -401,7 +401,7 @@ def get_indicator_timeseries(
     iso_codes: list[str],
     indicator_key: str,
     year_start: int = 2015,
-    year_end: int = 2024,
+    year_end: int = 2026,
 ) -> pd.DataFrame:
     """Long-format DataFrame: year, iso3, country, value, indicator, source."""
     years = list(range(year_start, year_end + 1))
